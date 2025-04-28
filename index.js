@@ -1271,7 +1271,7 @@
     
 
     const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="651" viewBox="0 0 1440 651" fill="none">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="651" viewBox="0 0 1440 717" fill="none">
       <g clip-path="url(#clip0_9577_19970)">
       <rect width="1440" height="717" fill="url(#paint0_linear_9577_19970)"/>
       <g filter="url(#filter0_f_9577_19970)">
