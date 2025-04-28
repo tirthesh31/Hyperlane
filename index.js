@@ -1128,6 +1128,7 @@
             }, 300);
             
           } else if (widthPercent < 66) {
+            loader.style.marginLeft = '33%';
             section1.style.opacity = '100%';
             section2.style.opacity = '100%';
             caseStudy2.style.display = 'block';
@@ -1139,11 +1140,12 @@
             }, 300);
             
           } else {
+              loader.style.marginLeft = '66%';
               section1.style.opacity = '100%';
               section2.style.opacity = '100%';
-            section3.style.opacity = '100%';
-            caseStudy3.style.display = 'block';
-            caseStudy3.style.opacity = '1';
+              section3.style.opacity = '100%';
+              caseStudy3.style.display = 'block';
+              caseStudy3.style.opacity = '1';
             
             setTimeout(() => {
                 caseStudy1.style.opacity = '0';
@@ -2414,7 +2416,7 @@
       </svg>
     `;
     // Get the container
-    const container = document.querySelector('.background-image-container');
+    const container = document.querySelector('.section-connect-background-image');
 
     // Insert the SVG into the container
     container.innerHTML = svg;
