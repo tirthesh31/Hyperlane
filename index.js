@@ -2414,7 +2414,7 @@
       </svg>
     `;
     // Get the container
-    const container = document.querySelector('.section-connect-background-image');
+    const container = document.querySelector('.background-image-container');
 
     // Insert the SVG into the container
     container.innerHTML = svg;
