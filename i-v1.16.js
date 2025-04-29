@@ -518,11 +518,11 @@
         const dataPackageText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         dataPackageText.setAttribute("class", "data-package-text");
         dataPackageText.setAttribute("text-anchor", "middle");
-
-        dataPackageText.setAttribute("y", "0");
+        dataPackageText.setAttribute("x", 0); // Center relative to the group
+        dataPackageText.setAttribute("y", -15); // Position above the group (adjust as needed)
         dataPackageText.setAttribute("fill", "white");
         dataPackageText.setAttribute("font-family", "Raleway, sans-serif");
-        dataPackageText.setAttribute("font-size", "4px");
+        dataPackageText.setAttribute("font-size", "6px");
         dataPackageText.setAttribute("font-weight", "500");
         dataPackageText.setAttribute("filter", "url(#text-glow-filter)");
         dataPackageText.textContent = validCombinations[currentCombinationIndex].dataPackage;
