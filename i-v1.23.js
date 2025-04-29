@@ -426,8 +426,10 @@
 
     }
 
+    var iteration = 0;
     async function updateText(newPackage) {
 
+      if(currentCombinationIndex !== 0 && iteration != 0) {
       const element = document.querySelector(".data-package-hero-text");
       element.style.transition = `opacity 1000ms ease-in-out`;
     
@@ -440,6 +442,9 @@
     
       // Fade in
       element.style.opacity = "1";
+      } else {
+        iteration++;
+      }
     }
     
     // Create navigation paths between stars
