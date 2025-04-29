@@ -5,9 +5,9 @@
     // Configuration
     const starSystems = [
       { id: 'star1', x: 680, y: 150, name: 'STARKNET' },
-      { id: 'star2', x: 280, y: 190, name: 'BASE' },
-      { id: 'star3', x: 440, y: 140, name: 'ARBITRUM' },
-      { id: 'star4', x: 360, y: 270, name: 'BNB CHAIN' },
+      { id: 'star2', x: 280, y: 190, name: 'ECLIPSE' },
+      { id: 'star3', x: 440, y: 140, name: 'OPTIMISM' },
+      { id: 'star4', x: 360, y: 270, name: 'UNICHAIN' },
       { id: 'star5', x: 480, y: 215, name: 'BASE' },
       { id: 'star6', x: 600, y: 240, name: 'SOLANA' },
       { id: 'star7', x: 200, y: 150, name: 'POLYGON' },
@@ -525,14 +525,32 @@
         dataPackageText.setAttribute("top", "-10");
         dataPackageText.textContent = validCombinations[currentCombinationIndex].dataPackage;
         
-
+        const animationDuration = 1000; // Duration in milliseconds for fade transition
+        const displayDuration = 3000; // Duration to display each headline
+        const element = document.querySelector(".data-package-hero-text").textContent;
+        // Start the animation cycle
+        setInterval(function() {
+          // Fade out
+          element.style.transition = `opacity ${animationDuration/2}ms ease-out`;
+          element.style.opacity = 0;
+          
+          setTimeout(function() {
+            // Update text while invisible
+            element.textContent = validCombinations[currentCombinationIndex].headline;
+            
+            // Fade in
+            element.style.transition = `opacity ${animationDuration/2}ms ease-in`;
+            element.style.opacity = 1;
+          }, animationDuration/2);
+          
+        }, displayDuration + animationDuration);
+      
         // Create the data package image for main path
         const dataPackage = document.createElementNS("http://www.w3.org/2000/svg", "image");
         dataPackage.setAttribute("class", `data-package `);
         dataPackage.setAttribute("href", "https://cdn.prod.website-files.com/67f6e5eb787625b1298796e7/67f7e6deb5e2dad989aac0d6_fd4bc82957cd54b5948ae2b3127da3c3_Data%20Package.svg");
         dataPackage.setAttribute("width", "27");
         dataPackage.setAttribute("height", "27");
-        dataPackage.setAttribute("opacity", "0");
 
         const dataPackageWrapper = document.createElementNS("http://www.w3.org/2000/svg", "g");
         dataPackageWrapper.setAttribute("class", `data-package-wrapper main-data-package-${index}`);
