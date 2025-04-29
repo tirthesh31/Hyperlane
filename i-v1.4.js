@@ -15,11 +15,10 @@
       { id: 'star9', x: 110, y: 290 , name: 'ETHEREUM' }
     ];
     
-     const validCombinations = [
-      { org: 'star6', dest: 'star2' }, // SOLANA - BASE
-      { org: 'star9', dest: 'star7' }, // POLYGON - ETHEREUM
-      { org: 'star4', dest: 'star3' }, // BNB CHAIN - ARBITRUM
-      { org: 'star8', dest: 'star1' }  // CELESTIA - STARKNET
+    const validCombinations = [
+      { org: 'star6', dest: 'star2' , dataPackage: 'Renzo', headline:'Asset Insuance'}, // SOLANA - BASE
+      { org: 'star3', dest: 'star4' , dataPackage: 'Velodrome', headline:'Velodrome'}, // POLYGON - ETHEREUM
+      { org: 'star9', dest: 'star5' , dataPackage: 'Aave', headline:'Aave'}, // BNB CHAIN - ARBITRUM
     ];
 
     let currentCombinationIndex = 0;
@@ -512,16 +511,40 @@
       
       // Create only 2 data packages (removed the first one)
       dataPackagePositions.slice(1, 3).forEach((_, index) => {
+
+        const dataPackageText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        dataPackageText.setAttribute("class", "data-package-text");
+        dataPackageText.setAttribute("text-anchor", "middle");
+        dataPackageText.setAttribute("y", "0");
+        dataPackageText.setAttribute("fill", "white");
+        dataPackageText.setAttribute("font-family", "Raleway, sans-serif");
+        dataPackageText.setAttribute("font-size", "12px");
+        dataPackageText.setAttribute("font-weight", "500");
+        dataPackageText.setAttribute("filter", "url(#text-glow-filter)");
+        dataPackageText.setAttribute("position", "absolute");
+        dataPackageText.setAttribute("top", "-10");
+        dataPackageText.textContent = validCombinations[currentCombinationIndex].dataPackage;
+        
+
         // Create the data package image for main path
         const dataPackage = document.createElementNS("http://www.w3.org/2000/svg", "image");
-        dataPackage.setAttribute("class", `data-package main-data-package-${index}`);
+        dataPackage.setAttribute("class", `data-package `);
         dataPackage.setAttribute("href", "https://cdn.prod.website-files.com/67f6e5eb787625b1298796e7/67f7e6deb5e2dad989aac0d6_fd4bc82957cd54b5948ae2b3127da3c3_Data%20Package.svg");
         dataPackage.setAttribute("width", "27");
         dataPackage.setAttribute("height", "27");
         dataPackage.setAttribute("opacity", "0");
+
+        const dataPackageWrapper = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        dataPackageWrapper.setAttribute("class", `data-package-wrapper main-data-package-${index}`);
+        dataPackageWrapper.setAttribute("opacity", `0`);
+        dataPackageWrapper.setAttribute("display", `flex`);
+        dataPackageWrapper.setAttribute("align-items", `center`);
+        dataPackageWrapper.setAttribute("direction", `row`);
         
         // Add to container
-        dataPackageContainer.appendChild(dataPackage);
+        dataPackageWrapper.appendChild(dataPackageText);
+        dataPackageWrapper.appendChild(dataPackage);
+        dataPackageContainer.appendChild(dataPackageWrapper);
       });
       
       // Update the gradient for the line
