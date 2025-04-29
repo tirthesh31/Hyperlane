@@ -122,7 +122,7 @@
         
         const orgText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         orgText.setAttribute("x", orgCenter.x);
-         orgText.setAttribute("y", orgCenter.y - 25);
+         orgText.setAttribute("y", orgCenter.y - 30);
         orgText.setAttribute("fill", "rgba(255, 255, 255, 0.60)");
         orgText.setAttribute("font-family", "Raleway, sans-serif");
         orgText.setAttribute("font-size", "9px");
@@ -518,8 +518,8 @@
         const dataPackageText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         dataPackageText.setAttribute("class", "data-package-text");
         dataPackageText.setAttribute("text-anchor", "middle");
-        dataPackageText.setAttribute("x", 0); // Center relative to the group
-        dataPackageText.setAttribute("y", -15); // Position above the group (adjust as needed)
+        dataPackageText.setAttribute("x", 10); // Center relative to the group
+        dataPackageText.setAttribute("y", 0); // Position above the group (adjust as needed)
         dataPackageText.setAttribute("fill", "white");
         dataPackageText.setAttribute("font-family", "Raleway, sans-serif");
         dataPackageText.setAttribute("font-size", "6px");
