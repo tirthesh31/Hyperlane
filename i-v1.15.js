@@ -122,7 +122,7 @@
         
         const orgText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         orgText.setAttribute("x", orgCenter.x);
-         orgText.setAttribute("y", orgCenter.y - 35);
+         orgText.setAttribute("y", orgCenter.y - 25);
         orgText.setAttribute("fill", "rgba(255, 255, 255, 0.60)");
         orgText.setAttribute("font-family", "Raleway, sans-serif");
         orgText.setAttribute("font-size", "9px");
@@ -551,7 +551,7 @@
         dataPackageWrapper.setAttribute("display", `flex`);
         dataPackageWrapper.setAttribute("align-items", `center`);
         dataPackageWrapper.setAttribute("justify-content", `center`);
-        dataPackageWrapper.setAttribute("direction", `row`);
+        dataPackageWrapper.setAttribute("direction", `column`);
         
         // Add to container
         dataPackageWrapper.appendChild(dataPackageText);
