@@ -429,6 +429,7 @@
     async function updateText(newPackage) {
 
       const element = document.querySelector(".data-package-hero-text");
+      element.style.transition = `opacity 1000ms ease-in-out`;
     
       // Fade out
       element.style.opacity = "0";
@@ -545,8 +546,7 @@
         
         
         // Call the function
-        
-          updateText(validCombinations[currentCombinationIndex].headline);
+        updateText(validCombinations[currentCombinationIndex].headline);
         
         
         // Create the data package image for main path
