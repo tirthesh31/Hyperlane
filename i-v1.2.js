@@ -1150,7 +1150,7 @@
         } 
         else if (section === 2) {
           loader1.style.width = '100%';
-          loader1.style.opacity = '0.5';
+          loader1.style.opacity = '0';
           loader2.style.width = '100%';
           loader2.style.opacity = '1';
           loader3.style.width = '0%';
@@ -1161,14 +1161,15 @@
         } 
         else if (section === 3) {
           loader1.style.width = '100%';
-          loader1.style.opacity = '0.5';
+          loader1.style.opacity = '0';
           loader2.style.width = '100%';
-          loader2.style.opacity = '0.5';
+          loader2.style.opacity = '0';
           loader3.style.width = '100%';
           loader3.style.opacity = '1';
           section1.style.opacity = '100%';
           section2.style.opacity = '100%';
           section3.style.opacity = '100%';
+          loader1.style.width = '0%';
           
           showCaseStudy(3);
         }
