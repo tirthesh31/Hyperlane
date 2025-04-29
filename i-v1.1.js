@@ -1183,7 +1183,6 @@
         
         // After a short delay, change display property and show the selected one
         setTimeout(() => {
-          caseStudy1.style.display = num === 1 ? 'block' : 'none';
           caseStudy2.style.display = num === 2 ? 'block' : 'none';
           caseStudy3.style.display = num === 3 ? 'block' : 'none';
           
