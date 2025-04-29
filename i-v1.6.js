@@ -527,7 +527,7 @@
         
         const animationDuration = 1000; // Duration in milliseconds for fade transition
         const displayDuration = 3000; // Duration to display each headline
-        const element = document.querySelector(".data-package-hero-text").textContent;
+        const element = document.querySelector(".data-package-hero-text");
         // Start the animation cycle
         setInterval(function() {
           // Fade out
