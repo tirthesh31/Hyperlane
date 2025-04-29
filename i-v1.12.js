@@ -17,8 +17,11 @@
     
     const validCombinations = [
       { org: 'star6', dest: 'star2' , dataPackage: 'Renzo', headline:'Asset Insuance'}, // SOLANA - BASE
-      { org: 'star3', dest: 'star4' , dataPackage: 'Velodrome', headline:'Velodrome'}, // POLYGON - ETHEREUM
+      { org: 'star4', dest: 'star3' , dataPackage: 'Velodrome', headline:'Velodrome'}, // POLYGON - ETHEREUM
       { org: 'star9', dest: 'star5' , dataPackage: 'Aave', headline:'Aave'}, // BNB CHAIN - ARBITRUM
+      { org: 'star6', dest: 'star2' , dataPackage: 'Renzo', headline:'Renzo'}, // SOLANA - BASE
+      { org: 'star4', dest: 'star3' , dataPackage: 'Velodrome', headline:'Apps'}, // POLYGON - ETHEREUM
+      { org: 'star9', dest: 'star5' , dataPackage: 'Aave', headline:'Governance'}, // BNB CHAIN - ARBITRUM
     ];
 
     let currentCombinationIndex = 0;
@@ -527,12 +530,13 @@
         
         
         const element = document.querySelector(".data-package-hero-text");
-        element.style.transition = `opacity 500ms ease-in-out`;
+        element.style.transition = `opacity 1000ms ease-in-out`;
         element.style.opacity = "0"; // Fade out
         setTimeout(() => {
-        },500);
+          element.style.opacity = "1"; // Fade out
+        },1000);
         element.textContent = validCombinations[currentCombinationIndex].headline;
-        element.style.opacity = "1"; // Fade out
+        
         
         
         // Create the data package image for main path
