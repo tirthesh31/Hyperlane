@@ -539,7 +539,7 @@
         const dataPackageText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         dataPackageText.setAttribute("class", "data-package-text");
         dataPackageText.setAttribute("text-anchor", "middle");
-        dataPackageText.setAttribute("x", 20); // Center relative to the group
+        dataPackageText.setAttribute("x", 15); // Center relative to the group
         dataPackageText.setAttribute("y", 0); // Position above the group (adjust as needed)
         dataPackageText.setAttribute("fill", "white");
         dataPackageText.setAttribute("font-family", "Raleway, sans-serif");
