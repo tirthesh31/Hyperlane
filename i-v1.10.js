@@ -525,27 +525,16 @@
         dataPackageText.setAttribute("top", "-10");
         dataPackageText.textContent = validCombinations[currentCombinationIndex].dataPackage;
         
-        const animationDuration = 1000; // Duration in milliseconds for fade transition
-        const displayDuration = 8000; // Duration to display each headline
+        
         const element = document.querySelector(".data-package-hero-text");
-
-        // Add a CSS transition for smooth fading
-        element.style.transition = "opacity 0.5s ease-in-out";
+        element.style.transition = `opacity 500ms ease-in-out`;
+        element.style.opacity = "0"; // Fade out
+        setTimeout(() => {
+        },500);
+        element.textContent = validCombinations[currentCombinationIndex].headline;
+        element.style.opacity = "1"; // Fade out
         
-        // Start the animation cycle
-        setInterval(function () {
-          // Fade out
-          element.style.opacity = 0;
         
-          setTimeout(function () {
-            // Update text while invisible
-            element.textContent = validCombinations[currentCombinationIndex].headline;
-        
-            // Fade in
-            element.style.opacity = 1;
-          }, 500); // Match the fade-out duration
-        });
-      
         // Create the data package image for main path
         const dataPackage = document.createElementNS("http://www.w3.org/2000/svg", "image");
         dataPackage.setAttribute("class", `data-package `);
