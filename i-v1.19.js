@@ -546,8 +546,10 @@
         
         
         // Call the function
-        updateText(validCombinations[currentCombinationIndex].headline);
-
+        if(index !== 0) {
+          updateText(validCombinations[currentCombinationIndex].headline);
+        }
+        
         // Create the data package image for main path
         const dataPackage = document.createElementNS("http://www.w3.org/2000/svg", "image");
         dataPackage.setAttribute("class", `data-package `);
