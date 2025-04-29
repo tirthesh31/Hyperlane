@@ -528,20 +528,23 @@
         const animationDuration = 1000; // Duration in milliseconds for fade transition
         const displayDuration = 8000; // Duration to display each headline
         const element = document.querySelector(".data-package-hero-text");
+
+        // Add a CSS transition for smooth fading
+        element.style.transition = "opacity 0.5s ease-in-out";
+        
         // Start the animation cycle
-        setInterval(function() {
+        setInterval(function () {
           // Fade out
           element.style.opacity = 0;
-          
-          setTimeout(function() {
+        
+          setTimeout(function () {
             // Update text while invisible
             element.textContent = validCombinations[currentCombinationIndex].headline;
-            
+        
             // Fade in
             element.style.opacity = 1;
-          }, animationDuration/2);
-          
-        }, displayDuration + animationDuration);
+          }, 500); // Match the fade-out duration
+        });
       
         // Create the data package image for main path
         const dataPackage = document.createElementNS("http://www.w3.org/2000/svg", "image");
