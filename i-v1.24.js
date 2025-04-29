@@ -557,7 +557,7 @@
         // Create the data package image for main path
         const dataPackage = document.createElementNS("http://www.w3.org/2000/svg", "image");
         dataPackage.setAttribute("class", `data-package `);
-        dataPackage.setAttribute("href", "https://cdn.prod.website-files.com/67f6e5eb787625b1298796e7/67f7e6deb5e2dad989aac0d6_fd4bc82957cd54b5948ae2b3127da3c3_Data%20Package.svg");
+        dataPackage.setAttribute("href", "https://cdn.prod.website-files.com/67f6e5eb787625b1298796e7/67f7e6deb5e2dad989aac0d6_f98e3818f5e1690f8735eeb94cff1243_Data%20Package.svg");
         dataPackage.setAttribute("width", "27");
         dataPackage.setAttribute("height", "27");
 
