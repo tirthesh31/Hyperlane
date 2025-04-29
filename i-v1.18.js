@@ -425,6 +425,22 @@
         });
 
     }
+
+    async function updateText(newPackage) {
+
+      const element = document.querySelector(".data-package-hero-text");
+      element.style.transition = `opacity 1000ms ease-in-out`;
+    
+      // Fade out
+      element.style.opacity = "0";
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for fade-out to complete
+    
+      // Update text
+      element.textContent = newPackage;
+    
+      // Fade in
+      element.style.opacity = "1";
+    }
     
     // Create navigation paths between stars
     function createNavigationPaths() {
@@ -528,16 +544,10 @@
         dataPackageText.textContent = validCombinations[currentCombinationIndex].dataPackage;
         
         
-        const element = document.querySelector(".data-package-hero-text");
-        element.style.transition = `opacity 1000ms ease-in-out`;
-        element.style.opacity = "0"; // Fade out
-        setTimeout(() => {
-          element.style.opacity = "1"; // Fade out
-        },1000);
-        element.textContent = validCombinations[currentCombinationIndex].headline;
         
-        
-        
+        // Call the function
+        updateText(validCombinations[currentCombinationIndex].headline);
+
         // Create the data package image for main path
         const dataPackage = document.createElementNS("http://www.w3.org/2000/svg", "image");
         dataPackage.setAttribute("class", `data-package `);
