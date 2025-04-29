@@ -1136,7 +1136,6 @@
               caseStudy2.style.opacity = '1';
   
               setTimeout(() => {
-                  caseStudy1.style.display = 'none';
                   caseStudy3.style.display = 'none';
               }, 300);
   
@@ -1149,7 +1148,6 @@
               caseStudy3.style.opacity = '1';
   
               setTimeout(() => {
-                  caseStudy1.style.display = 'none';
                   caseStudy2.style.display = 'none';
               }, 300);
           }
