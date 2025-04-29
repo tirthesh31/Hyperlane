@@ -1088,7 +1088,12 @@
     });
   
     document.addEventListener('DOMContentLoaded', function () {
-      const loader = document.querySelectorAll('.loader')[1];
+      // Get loader elements
+      const loader1 = document.querySelector('.loader-1');
+      const loader2 = document.querySelector('.loader-2');
+      const loader3 = document.querySelector('.loader-3');
+      
+      // Get sections and case study elements
       const sectionFooter = document.querySelector('.section-casestudy-main-footer');
       const section1 = document.querySelector('.section-casestudy-1');
       const section2 = document.querySelector('.section-casestudy-2');
@@ -1097,187 +1102,210 @@
       const caseStudy2 = document.querySelector('.casestudy-2');
       const caseStudy3 = document.querySelector('.casestudy-3');
       
+      // Animation control variables
       let animationId;
       let startTime;
       let paused = false;
       let elapsedWhenPaused = 0;
       let duration = 6000; // Animation duration in ms
-  
-      // Add transition to loader for width and margin
-      loader.style.transition = 'width 1s ease, margin-left 1s ease';
-  
-      // Function to update loader and case studies
-      function updateUI(widthPercent) {
-          loader.style.width = `${widthPercent}%`;
-  
-          section1.style.opacity = '40%';
-          section2.style.opacity = '40%';
-          section3.style.opacity = '40%';
-          caseStudy1.style.opacity = '0';
-          caseStudy2.style.opacity = '0';
-          caseStudy3.style.opacity = '0';
-  
-          if (widthPercent < 33) {
-              loader.style.marginLeft = '0%';
-              section1.style.opacity = '100%';
-              caseStudy1.style.display = 'block';
-              caseStudy1.style.opacity = '1';
-  
-              setTimeout(() => {
-                  caseStudy2.style.display = 'none';
-                  caseStudy3.style.display = 'none';
-              }, 300);
-  
-          } else if (widthPercent < 66) {
-              loader.style.marginLeft = '33%';
-              section1.style.opacity = '100%';
-              section2.style.opacity = '100%';
-              caseStudy2.style.display = 'block';
-              caseStudy2.style.opacity = '1';
-  
-              setTimeout(() => {
-                  caseStudy3.style.display = 'none';
-              }, 300);
-  
-          } else {
-              loader.style.marginLeft = '66%';
-              section1.style.opacity = '100%';
-              section2.style.opacity = '100%';
-              section3.style.opacity = '100%';
-              caseStudy3.style.display = 'block';
-              caseStudy3.style.opacity = '1';
-  
-              setTimeout(() => {
-                  caseStudy2.style.display = 'none';
-              }, 300);
-          }
+      let currentSection = 1; // Track current active section
+      
+      // Add transitions to loaders
+      if (loader1) loader1.style.transition = 'width 1s ease, opacity 0.3s ease';
+      if (loader2) loader2.style.transition = 'width 1s ease, opacity 0.3s ease';
+      if (loader3) loader3.style.transition = 'width 1s ease, opacity 0.3s ease';
+    
+      // Check if all required elements exist
+      if (!loader1 || !loader2 || !loader3) {
+        console.error('Loader elements not found');
+        return;
       }
-  
-      function animateLoader(currentTime) {
-          if (!startTime) startTime = currentTime - elapsedWhenPaused;
-          const elapsed = currentTime - startTime;
-          let progress = elapsed / duration;
-          if (progress > 1) progress = 1;
-          const widthPercent = progress * 100;
-  
-          updateUI(widthPercent);
-  
-          if (progress < 1) {
-              animationId = requestAnimationFrame(animateLoader);
-          } else {
-              setTimeout(() => {
-                  loader.style.transition = 'none'; // Disable transition
-                  loader.style.width = '0%';
-                  loader.style.marginLeft = '0%';
-                  startTime = null;
-                  elapsedWhenPaused = 0;
-  
-                  void loader.offsetWidth; // Force reflow
-                  loader.style.transition = 'width 1s ease, margin-left 1s ease'; // Re-enable transition
-  
-                  updateUI(0);
-  
-                  if (!paused) {
-                      animationId = requestAnimationFrame(animateLoader);
-                  }
-              }, 1000); // Wait 1s at 100%
-          }
+      
+      if (!section1 || !section2 || !section3) {
+        console.error('Section elements not found');
+        return;
       }
-  
+      
+      if (!caseStudy1 || !caseStudy2 || !caseStudy3) {
+        console.error('Case study elements not found');
+        return;
+      }
+    
+      // Function to update UI based on current section
+      function updateUI(section) {
+        // Reset all sections and case studies
+        section1.style.opacity = '40%';
+        section2.style.opacity = '40%';
+        section3.style.opacity = '40%';
+        
+        // Update loaders based on current section
+        if (section === 1) {
+          loader1.style.width = '100%';
+          loader1.style.opacity = '1';
+          loader2.style.width = '0%';
+          loader3.style.width = '0%';
+          section1.style.opacity = '100%';
+          
+          showCaseStudy(1);
+        } 
+        else if (section === 2) {
+          loader1.style.width = '100%';
+          loader1.style.opacity = '0.5';
+          loader2.style.width = '100%';
+          loader2.style.opacity = '1';
+          loader3.style.width = '0%';
+          section1.style.opacity = '100%';
+          section2.style.opacity = '100%';
+          
+          showCaseStudy(2);
+        } 
+        else if (section === 3) {
+          loader1.style.width = '100%';
+          loader1.style.opacity = '0.5';
+          loader2.style.width = '100%';
+          loader2.style.opacity = '0.5';
+          loader3.style.width = '100%';
+          loader3.style.opacity = '1';
+          section1.style.opacity = '100%';
+          section2.style.opacity = '100%';
+          section3.style.opacity = '100%';
+          
+          showCaseStudy(3);
+        }
+      }
+      
+      // Function to show specific case study and hide others
+      function showCaseStudy(num) {
+        // Hide all case studies first
+        caseStudy1.style.opacity = '0';
+        caseStudy2.style.opacity = '0';
+        caseStudy3.style.opacity = '0';
+        
+        // After a short delay, change display property and show the selected one
+        setTimeout(() => {
+          caseStudy1.style.display = num === 1 ? 'block' : 'none';
+          caseStudy2.style.display = num === 2 ? 'block' : 'none';
+          caseStudy3.style.display = num === 3 ? 'block' : 'none';
+          
+          // Show the selected case study
+          if (num === 1) caseStudy1.style.opacity = '1';
+          if (num === 2) caseStudy2.style.opacity = '1';
+          if (num === 3) caseStudy3.style.opacity = '1';
+        }, 300);
+      }
+    
+      // Animation loop function
+      function animateLoaders(currentTime) {
+        if (!startTime) startTime = currentTime - elapsedWhenPaused;
+        const elapsed = currentTime - startTime;
+        
+        // Calculate which section should be active based on elapsed time
+        const totalCycle = duration * 3; // Total time for all 3 sections
+        const cyclePosition = (elapsed % totalCycle) / duration;
+        
+        // Determine current section (1, 2, or 3)
+        const newSection = Math.floor(cyclePosition) + 1;
+        
+        // Only update UI if section changed
+        if (newSection !== currentSection) {
+          currentSection = newSection > 3 ? 1 : newSection;
+          updateUI(currentSection);
+        }
+        
+        // Continue animation if not paused
+        if (!paused) {
+          animationId = requestAnimationFrame(animateLoaders);
+        }
+      }
+    
+      // Start the animation
       function startAnimation() {
-          if (!paused) {
-              startTime = null;
-              elapsedWhenPaused = 0;
-              animationId = requestAnimationFrame(animateLoader);
-          }
+        if (!paused) {
+          startTime = null;
+          elapsedWhenPaused = 0;
+          animationId = requestAnimationFrame(animateLoaders);
+        }
       }
-  
+    
+      // Pause the animation
       function pauseAnimation() {
-          if (!paused) {
-              paused = true;
-              cancelAnimationFrame(animationId);
-              elapsedWhenPaused = performance.now() - (startTime || performance.now());
-          }
+        if (!paused) {
+          paused = true;
+          cancelAnimationFrame(animationId);
+          elapsedWhenPaused = performance.now() - (startTime || performance.now());
+        }
       }
-  
+    
+      // Resume the animation
       function resumeAnimation() {
-          if (paused) {
-              paused = false;
-              animationId = requestAnimationFrame(animateLoader);
-          }
+        if (paused) {
+          paused = false;
+          animationId = requestAnimationFrame(animateLoaders);
+        }
       }
-  
+    
+      // Handle section hover
       function handleSectionHover(sectionNum) {
-          pauseAnimation();
-  
-          // Instantly reset loader
-          loader.style.transition = 'none';
-          loader.style.width = '0%';
-          loader.style.marginLeft = '0%';
-  
-          // Force browser to acknowledge style changes
-          void loader.offsetWidth;
-  
-          // Add back transition
-          loader.style.transition = 'width 1s ease, margin-left 1s ease';
-  
-          // Now animate to the correct section smoothly
-          if (sectionNum === 1) {
-              loader.style.marginLeft = '0%';
-              loader.style.width = '33%';
-              updateUI(32); // near middle of first section
-          } else if (sectionNum === 2) {
-              loader.style.marginLeft = '33%';
-              loader.style.width = '66%';
-              updateUI(65); // near middle of second section
-          } else if (sectionNum === 3) {
-              loader.style.marginLeft = '66%';
-              loader.style.width = '100%';
-              updateUI(99); // near middle of third section
-          }
+        pauseAnimation();
+        updateUI(sectionNum);
       }
-  
+    
       // Set up hover events
       section1.addEventListener('mouseenter', () => handleSectionHover(1));
       section2.addEventListener('mouseenter', () => handleSectionHover(2));
       section3.addEventListener('mouseenter', () => handleSectionHover(3));
-  
+      
+      // Set up mouseleave event to resume animation
+      const sections = [section1, section2, section3];
+      sections.forEach(section => {
+        section.addEventListener('mouseleave', resumeAnimation);
+      });
+    
+      // Intersection Observer to start/pause animation when section is in viewport
       const observer = new IntersectionObserver(function (entries) {
-          if (entries[0].isIntersecting) {
-              resumeAnimation();
-          } else {
-              pauseAnimation();
-          }
+        if (entries[0].isIntersecting) {
+          resumeAnimation();
+        } else {
+          pauseAnimation();
+        }
       }, { threshold: 0.2 });
-  
-      observer.observe(sectionFooter);
-  
+    
+      if (sectionFooter) {
+        observer.observe(sectionFooter);
+      }
+    
+      // Initial setup
       caseStudy1.style.display = 'block';
       caseStudy1.style.opacity = '1';
       caseStudy2.style.display = 'none';
       caseStudy2.style.opacity = '0';
       caseStudy3.style.display = 'none';
       caseStudy3.style.opacity = '0';
-  
+    
+      // Add transitions
       [caseStudy1, caseStudy2, caseStudy3].forEach(caseStudy => {
-          caseStudy.style.transition = 'opacity 0.3s ease';
+        caseStudy.style.transition = 'opacity 0.3s ease';
       });
-  
+    
       [section1, section2, section3].forEach(section => {
-          section.style.transition = 'opacity 0.3s ease';
+        section.style.transition = 'opacity 0.3s ease';
       });
-  
-      if (isElementInViewport(sectionFooter)) {
-          startAnimation();
-      }
-  
+    
+      // Check if element is in viewport
       function isElementInViewport(el) {
-          const rect = el.getBoundingClientRect();
-          return (
-              rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-              rect.bottom >= 0
-          );
+        if (!el) return false;
+        
+        const rect = el.getBoundingClientRect();
+        return (
+          rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.bottom >= 0
+        );
       }
-  });
+    
+      // Start animation if section is in viewport
+      if (isElementInViewport(sectionFooter)) {
+        startAnimation();
+      }
+    });
   
     
