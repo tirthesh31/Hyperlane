@@ -531,7 +531,6 @@
         // Start the animation cycle
         setInterval(function() {
           // Fade out
-          element.style.transition = `opacity ${animationDuration/2}ms ease-out`;
           element.style.opacity = 0;
           
           setTimeout(function() {
@@ -539,7 +538,6 @@
             element.textContent = validCombinations[currentCombinationIndex].headline;
             
             // Fade in
-            element.style.transition = `opacity ${animationDuration/2}ms ease-in`;
             element.style.opacity = 1;
           }, animationDuration/2);
           
