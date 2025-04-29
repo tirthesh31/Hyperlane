@@ -521,7 +521,7 @@
         dataPackageText.setAttribute("y", "0");
         dataPackageText.setAttribute("fill", "white");
         dataPackageText.setAttribute("font-family", "Raleway, sans-serif");
-        dataPackageText.setAttribute("font-size", "12px");
+        dataPackageText.setAttribute("font-size", "6px");
         dataPackageText.setAttribute("font-weight", "500");
         dataPackageText.setAttribute("filter", "url(#text-glow-filter)");
         dataPackageText.setAttribute("position", "absolute");
