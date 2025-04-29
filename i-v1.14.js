@@ -518,14 +518,13 @@
         const dataPackageText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         dataPackageText.setAttribute("class", "data-package-text");
         dataPackageText.setAttribute("text-anchor", "middle");
+
         dataPackageText.setAttribute("y", "0");
         dataPackageText.setAttribute("fill", "white");
         dataPackageText.setAttribute("font-family", "Raleway, sans-serif");
-        dataPackageText.setAttribute("font-size", "6px");
+        dataPackageText.setAttribute("font-size", "4px");
         dataPackageText.setAttribute("font-weight", "500");
         dataPackageText.setAttribute("filter", "url(#text-glow-filter)");
-        dataPackageText.setAttribute("position", "absolute");
-        dataPackageText.setAttribute("top", "-10");
         dataPackageText.textContent = validCombinations[currentCombinationIndex].dataPackage;
         
         
@@ -551,6 +550,7 @@
         dataPackageWrapper.setAttribute("opacity", `0`);
         dataPackageWrapper.setAttribute("display", `flex`);
         dataPackageWrapper.setAttribute("align-items", `center`);
+        dataPackageWrapper.setAttribute("justify-content", `center`);
         dataPackageWrapper.setAttribute("direction", `row`);
         
         // Add to container
