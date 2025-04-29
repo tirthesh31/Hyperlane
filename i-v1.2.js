@@ -1134,7 +1134,7 @@
       // Function to update UI based on current section
       function updateUI(section) {
         // Reset all sections and case studies
-        section1.style.opacity = '40%';
+        section1.style.opacity = '100%';
         section2.style.opacity = '40%';
         section3.style.opacity = '40%';
         
@@ -1145,7 +1145,8 @@
           loader2.style.width = '0%';
           loader3.style.width = '0%';
           section1.style.opacity = '100%';
-          
+          section2.style.opacity = '40%';
+          section3.style.opacity = '40%';
           showCaseStudy(1);
         } 
         else if (section === 2) {
@@ -1154,9 +1155,9 @@
           loader2.style.width = '100%';
           loader2.style.opacity = '1';
           loader3.style.width = '0%';
-          section1.style.opacity = '100%';
+          section1.style.opacity = '40%';
           section2.style.opacity = '100%';
-          
+          section3.style.opacity = '40%';
           showCaseStudy(2);
         } 
         else if (section === 3) {
@@ -1166,8 +1167,8 @@
           loader2.style.opacity = '0';
           loader3.style.width = '100%';
           loader3.style.opacity = '1';
-          section1.style.opacity = '100%';
-          section2.style.opacity = '100%';
+          section1.style.opacity = '40%';
+          section2.style.opacity = '40%';
           section3.style.opacity = '100%';
           loader1.style.width = '0%';
           
