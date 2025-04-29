@@ -526,7 +526,7 @@
         dataPackageText.textContent = validCombinations[currentCombinationIndex].dataPackage;
         
         const animationDuration = 1000; // Duration in milliseconds for fade transition
-        const displayDuration = 5000; // Duration to display each headline
+        const displayDuration = 8000; // Duration to display each headline
         const element = document.querySelector(".data-package-hero-text");
         // Start the animation cycle
         setInterval(function() {
