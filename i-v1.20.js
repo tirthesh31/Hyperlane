@@ -546,7 +546,7 @@
         
         
         // Call the function
-        if(index !== 0) {
+        if(index !== 0 && index !== 1) {
           updateText(validCombinations[currentCombinationIndex].headline);
         }
         
