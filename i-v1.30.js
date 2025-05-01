@@ -15,7 +15,7 @@
       { id: 'star6', x: viewportWidth * .397, y: viewportHeight * .32, name: 'SOLANA' },
       { id: 'star7', x: viewportWidth * .132, y: viewportHeight * .2, name: 'POLYGON' },
       { id: 'star8', x: viewportWidth * .146, y: viewportHeight * .315, name: 'CELESTIA' },
-      { id: 'star9', x: viewportWidth * .51, y: viewportHeight * .386 , name: 'ETHEREUM' }
+      { id: 'star9', x: viewportWidth * .0736, y: viewportHeight * .386 , name: 'ETHEREUM' }
     ];
     
     const validCombinations = [
