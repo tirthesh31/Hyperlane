@@ -8,13 +8,13 @@
     // Configuration
     const starSystems = [
       { id: 'star1', x: viewportWidth * .45, y: viewportHeight * .2, name: 'STARKNET' },
-      { id: 'star2', x: viewportWidth * .185, y: viewportHeight * .252, name: 'ECLIPSE' },
+      { id: 'star2', x: viewportWidth * .187, y: viewportHeight * .252, name: 'ECLIPSE' },
       { id: 'star3', x: viewportWidth * .291, y: viewportHeight * .186, name: 'OPTIMISM' },
-      { id: 'star4', x: viewportWidth * .238, y: viewportHeight * .358, name: 'UNICHAIN' },
+      { id: 'star4', x: viewportWidth * .240, y: viewportHeight * .358, name: 'UNICHAIN' },
       { id: 'star5', x: viewportWidth * .317, y: viewportHeight * .286, name: 'BASE' },
       { id: 'star6', x: viewportWidth * .397, y: viewportHeight * .32, name: 'SOLANA' },
-      { id: 'star7', x: viewportWidth * .132, y: viewportHeight * .2, name: 'POLYGON' },
-      { id: 'star8', x: viewportWidth * .146, y: viewportHeight * .315, name: 'CELESTIA' },
+      { id: 'star7', x: viewportWidth * .134, y: viewportHeight * .2, name: 'POLYGON' },
+      { id: 'star8', x: viewportWidth * .148, y: viewportHeight * .315, name: 'CELESTIA' },
       { id: 'star9', x: viewportWidth * .0736, y: viewportHeight * .386 , name: 'ETHEREUM' }
     ];
     
