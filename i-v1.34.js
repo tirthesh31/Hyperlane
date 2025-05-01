@@ -771,7 +771,7 @@
       // Create a more refined, elegant line drawing animation
       tl.to(mainNavLine, {
         strokeDashoffset: 0,
-        duration: 2.5, // Slightly longer for more fluid motion
+        duration: 1.25, // Slightly longer for more fluid motion
         ease: "power2.inOut", // Smoother easing
         onUpdate: function() {
           // Dynamic width adjustment during draw for added visual depth
@@ -802,7 +802,7 @@
       // Staged reveal of split lines for better visual hierarchy
       tl.to(splitLines, {
         opacity: 0.3,
-        duration: 0.4,
+        duration: 0.2,
         stagger: {
           amount: 0.3,
           from: "start"
@@ -812,7 +812,7 @@
       // Elegant drawing animation for each split line
       tl.to(splitLines, {
         strokeDashoffset: 0,
-        duration: 1.2,
+        duration: .6,
         ease: "power3.out",
         stagger: {
           amount: 0.3,
@@ -823,7 +823,7 @@
       // Fade out split lines at the end
       tl.to(splitLines, {
         opacity: 0.3,
-        duration: 0.7,
+        duration: 0.35,
         ease: "power1.inOut"
       }, "+=0.2");
       
@@ -836,7 +836,7 @@
         tl.to(rect, {
           fillOpacity: .9,
           duration: 0,
-          delay: 0.1,
+          delay: 0.05,
           ease: "power1.Out"
         });
       });
@@ -874,7 +874,7 @@
               start: 0.40, // Start from org position (approximately 1/3 of the path)
               end: 1 // End at dest
             },
-            duration: 2.0, // Medium speed package
+            duration: 1.0, // Medium speed package
             ease: "power1.inOut",
             onUpdate: function() {
               const progress = this.progress();
