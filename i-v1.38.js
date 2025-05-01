@@ -434,14 +434,21 @@
       if (currentCombinationIndex !== 0 && iteration != 0) {
         const element = document.querySelector(".data-package-hero-text");
         
-        // First clear the current text
+        // Clear the current text
         element.textContent = "";
         
-        // Then type out each character with a delay
-        const typeSpeed = 100; // milliseconds per character
+        // Create a temporary string to build up the text
+        let displayText = "";
+        const typeSpeed = 50; // milliseconds per character
         
         for (let i = 0; i < newPackage.length; i++) {
-          element.textContent += newPackage.charAt(i);
+          // Add character to our temporary string
+          displayText += newPackage.charAt(i);
+          
+          // Update the DOM element once per iteration
+          element.textContent = displayText;
+          
+          // Wait before adding the next character
           await new Promise(resolve => setTimeout(resolve, typeSpeed));
         }
       } else {
