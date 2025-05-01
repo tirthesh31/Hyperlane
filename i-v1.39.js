@@ -19,7 +19,7 @@
     ];
     
     const validCombinations = [
-      { org: 'star6', dest: 'star2' , dataPackage: 'Renzo', headline:'Asset Insuance'}, // SOLANA - BASE
+      { org: 'star6', dest: 'star2' , dataPackage: 'Renzo', headline:'Asset Issuance'}, // SOLANA - BASE
       { org: 'star4', dest: 'star3' , dataPackage: 'Velodrome', headline:'Velodrome'}, // POLYGON - ETHEREUM
       { org: 'star9', dest: 'star5' , dataPackage: 'Aave', headline:'Aave'}, // BNB CHAIN - ARBITRUM
       { org: 'star6', dest: 'star2' , dataPackage: 'Renzo', headline:'Renzo'}, // SOLANA - BASE
