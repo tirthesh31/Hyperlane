@@ -1055,6 +1055,11 @@
 
       // Animate loader width
       function animateLoader(loader, toWidth, duration) {
+        
+        if (window.innerWidth <= 768) {
+          return; // Exit the function for smaller screens
+        }
+
         const startTime = performance.now();
         const startWidth = parseInt(getComputedStyle(loader).width) || 0;
         const endWidth = loader.parentElement.offsetWidth * (toWidth / 100);
@@ -1261,6 +1266,11 @@
     
       // Animation loop function
       function animateLoaders(currentTime) {
+        
+        if (window.innerWidth <= 768) {
+          return; // Exit the function for smaller screens
+        }
+
         if (!startTime) startTime = currentTime - elapsedWhenPaused;
         const elapsed = currentTime - startTime;
         
