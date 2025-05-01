@@ -438,7 +438,7 @@
         element.textContent = "";
         
         // Then type out each character with a delay
-        const typeSpeed = 50; // milliseconds per character
+        const typeSpeed = 100; // milliseconds per character
         
         for (let i = 0; i < newPackage.length; i++) {
           element.textContent += newPackage.charAt(i);
