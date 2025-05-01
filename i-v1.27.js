@@ -7,15 +7,15 @@
 
     // Configuration
     const starSystems = [
-      { id: 'star1', x: viewportWidth * .472, y: viewportHeight * .104, name: 'STARKNET' },
-      { id: 'star2', x: viewportWidth * .195, y: viewportHeight * .132, name: 'ECLIPSE' },
-      { id: 'star3', x: viewportWidth * .305, y: viewportHeight * .097, name: 'OPTIMISM' },
-      { id: 'star4', x: viewportWidth * .25, y: viewportHeight * .188, name: 'UNICHAIN' },
-      { id: 'star5', x: viewportWidth * .334, y: viewportHeight * .15, name: 'BASE' },
-      { id: 'star6', x: viewportWidth * .458, y: viewportHeight * .167, name: 'SOLANA' },
-      { id: 'star7', x: viewportWidth * .14, y: viewportHeight * .105, name: 'POLYGON' },
-      { id: 'star8', x: viewportWidth * .153, y: viewportHeight * .165, name: 'CELESTIA' },
-      { id: 'star9', x: viewportWidth * .77, y: viewportHeight * .202 , name: 'ETHEREUM' }
+      { id: 'star1', x: viewportWidth * .472, y: viewportHeight * .2, name: 'STARKNET' },
+      { id: 'star2', x: viewportWidth * .195, y: viewportHeight * .252, name: 'ECLIPSE' },
+      { id: 'star3', x: viewportWidth * .305, y: viewportHeight * .186, name: 'OPTIMISM' },
+      { id: 'star4', x: viewportWidth * .25, y: viewportHeight * .358, name: 'UNICHAIN' },
+      { id: 'star5', x: viewportWidth * .334, y: viewportHeight * .286, name: 'BASE' },
+      { id: 'star6', x: viewportWidth * .458, y: viewportHeight * .32, name: 'SOLANA' },
+      { id: 'star7', x: viewportWidth * .14, y: viewportHeight * .2, name: 'POLYGON' },
+      { id: 'star8', x: viewportWidth * .153, y: viewportHeight * .315, name: 'CELESTIA' },
+      { id: 'star9', x: viewportWidth * .77, y: viewportHeight * .386 , name: 'ETHEREUM' }
     ];
     
     const validCombinations = [
