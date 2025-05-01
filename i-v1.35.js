@@ -663,7 +663,7 @@
               // Fade in basic stars and immediately start next cycle
               gsap.to([currentOrgStar, currentDestStar], {
                 opacity: 1,
-                duration: 0.3,
+                duration: 0.2, // Reduced from 0.3
                 onComplete: function() {
                   rotateSystems();
                   animateCycle();
@@ -681,7 +681,7 @@
             `#${starSystems[currentDest].id} .dest-content`
           ], {
             opacity: 0,
-            duration: 0.5,
+            duration: 0.3, // Reduced from 0.5
             ease: "power1.inOut"
           });
         }
@@ -700,7 +700,7 @@
         // Fade out both previous contents
         tl.to([prevOrgSelector, prevDestSelector], {
           opacity: 0,
-          duration: 0.75
+          duration: 0.5 // Reduced from 0.75
         });
 
         // Hide both previous contents
@@ -714,7 +714,7 @@
         });
         tl.to(prevOrgStarSelector, {
           opacity: 1,
-          duration: 0.75
+          duration: 0.5 // Reduced from 0.75
         });
       }
       
@@ -729,7 +729,7 @@
       // First hide and show origin content
       tl.to(orgStarSelector, {
         opacity: 0,
-        duration: 0.75
+        duration: 0.5 // Reduced from 0.75
       });
 
       tl.set(orgContentSelector, { 
@@ -737,13 +737,13 @@
       });
       tl.to(orgContentSelector, {
         opacity: 1,
-        duration: 0.75
+        duration: 0.5 // Reduced from 0.75
       });
 
       // Then handle destination content
       tl.to(destStarSelector, {
         opacity: 0,
-        duration: 0.75
+        duration: 0.5 // Reduced from 0.75
       }, ">");
 
       tl.set(destContentSelector, { 
@@ -751,7 +751,7 @@
       });
       tl.to(destContentSelector, {
         opacity: 1,
-        duration: 0.75
+        duration: 0.5 // Reduced from 0.75
       });
       
       // Animate the main navigation line with a refined, elegant approach
@@ -771,7 +771,7 @@
       // Create a more refined, elegant line drawing animation
       tl.to(mainNavLine, {
         strokeDashoffset: 0,
-        duration: 1.25, // Slightly longer for more fluid motion
+        duration: 1.5, // Reduced from 2.5
         ease: "power2.inOut", // Smoother easing
         onUpdate: function() {
           // Dynamic width adjustment during draw for added visual depth
@@ -787,7 +787,7 @@
       tl.to(mainNavLine, {
         strokeWidth: 2,
         opacity: 1,
-        duration: 0.8,
+        duration: 0.5, // Reduced from 0.8
         ease: "sine.inOut",
         yoyo: true,
         repeat: 1
@@ -802,30 +802,30 @@
       // Staged reveal of split lines for better visual hierarchy
       tl.to(splitLines, {
         opacity: 0.3,
-        duration: 0.2,
+        duration: 0.3, // Reduced from 0.4
         stagger: {
-          amount: 0.3,
+          amount: 0.2, // Reduced from 0.3
           from: "start"
         }
-      }, "connectionComplete-=0.4");
+      }, "connectionComplete-=0.3"); // Adjusted from 0.4
       
       // Elegant drawing animation for each split line
       tl.to(splitLines, {
         strokeDashoffset: 0,
-        duration: .6,
+        duration: 0.8, // Reduced from 1.2
         ease: "power3.out",
         stagger: {
-          amount: 0.3,
+          amount: 0.2, // Reduced from 0.3
           from: "start"
         }
-      }, "-=0.4");
+      }, "-=0.3"); // Adjusted from 0.4
       
       // Fade out split lines at the end
       tl.to(splitLines, {
         opacity: 0.3,
-        duration: 0.35,
+        duration: 0.5, // Reduced from 0.7
         ease: "power1.inOut"
-      }, "+=0.2");
+      }, "+=0.1"); // Reduced from 0.2
       
       // Complete connection label - after main line AND split lines are fully drawn
       tl.addLabel("fullConnectionComplete", ">");
@@ -836,13 +836,13 @@
         tl.to(rect, {
           fillOpacity: .9,
           duration: 0,
-          delay: 0.05,
+          delay: 0.05, // Reduced from 0.1
           ease: "power1.Out"
         });
       });
       
       // Create a label for data package animations to start after full connection
-      tl.addLabel("dataPackages", "fullConnectionComplete+=0.2");
+      tl.addLabel("dataPackages", "fullConnectionComplete+=0.1"); // Reduced from 0.2
       
       // Animate main data packages along the navigation line
       const mainPackages = document.querySelectorAll(".main-data-package-0, .main-data-package-1");
@@ -857,12 +857,12 @@
       mainPackages.forEach((pkg, index) => {
         // Position the package at the org symbol position
         tl.set(pkg, {
-          x: orgStartX , // Center the data package (half of width)
-          y: orgStartY , // Center the data package (half of height)
+          x: orgStartX, // Center the data package (half of width)
+          y: orgStartY, // Center the data package (half of height)
           opacity: 1, // Start fully visible
           scale: 0.8, // Start at normal scale
           rotation: Math.random() * 30 - 15 // Random rotation between -15 and 15 degrees
-        }, `dataPackages+=${index + 2}`);
+        }, `dataPackages+=${index + 1}`); // Reduced delay from index + 2
         
         // For the first package (medium speed to dest)
         if (index === 0) {
@@ -874,7 +874,7 @@
               start: 0.40, // Start from org position (approximately 1/3 of the path)
               end: 1 // End at dest
             },
-            duration: 1.0, // Medium speed package
+            duration: 1.2, // Reduced from 2.0
             ease: "power1.inOut",
             onUpdate: function() {
               const progress = this.progress();
@@ -888,7 +888,7 @@
           tl.to(pkg, {
             opacity: 0,
             scale: 1.2, 
-            duration: 0.3,
+            duration: 0.2, // Reduced from 0.3
             ease: "power3.in"
           }, `>-0.2`);
         }
@@ -902,7 +902,7 @@
               start: 0.4, // Start from org position (approximately 1/3 of the path)
               end: 1
             },
-            duration: 2.8, // Slowest package
+            duration: 1.8, // Reduced from 2.8
             ease: "power1.inOut",
             onUpdate: function() {
               const progress = this.progress();
@@ -916,21 +916,23 @@
           tl.to(pkg, {
             opacity: 0,
             scale: 1.2, 
-            duration: 0.3,
+            duration: 0.2, // Reduced from 0.3
             ease: "power3.in"
           }, `>-0.2`);
         }
       });
+      
       // Reset rotating rectangles
       const resetRotatingRects = document.querySelectorAll(`#${starSystems[currentOrg].id} .org-rotating-rect`);
       rotatingRects.forEach((rect, index) => {
         tl.to(rect, {
           fillOpacity: 0,
           duration: 0,
-          delay: 0.1,
+          delay: 0.05, // Reduced from 0.1
           ease: "power1.Out"
         });
       });
+      
       return tl;
     }
     
