@@ -431,22 +431,23 @@
 
     var iteration = 0;
     async function updateText(newPackage) {
-
-      if(currentCombinationIndex !== 0 && iteration != 0) {
-      const element = document.querySelector(".data-package-hero-text");
-      element.style.transition = `opacity 1000ms ease-in-out`;
-    
-      // Fade out
-      element.style.opacity = "0";
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for fade-out to complete
-    
-      // Update text
-      element.textContent = newPackage;
-    
-      // Fade in
-      element.style.opacity = "1";
+      if (currentCombinationIndex !== 0 && iteration != 0) {
+        const element = document.querySelector(".data-package-hero-text");
+        
+        // First clear the current text
+        element.textContent = "";
+        
+        // Then type out each character with a delay
+        const typeSpeed = 50; // milliseconds per character
+        
+        for (let i = 0; i < newPackage.length; i++) {
+          element.textContent += newPackage.charAt(i);
+          await new Promise(resolve => setTimeout(resolve, typeSpeed));
+        }
       } else {
+        // First time setup
         iteration++;
+        document.querySelector(".data-package-hero-text").textContent = newPackage;
       }
     }
     
