@@ -2,17 +2,20 @@
     // Register plugins
     gsap.registerPlugin(MotionPathPlugin);
     
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
     // Configuration
     const starSystems = [
-      { id: 'star1', x: 680, y: 150, name: 'STARKNET' },
-      { id: 'star2', x: 280, y: 190, name: 'ECLIPSE' },
-      { id: 'star3', x: 440, y: 140, name: 'OPTIMISM' },
-      { id: 'star4', x: 360, y: 270, name: 'UNICHAIN' },
-      { id: 'star5', x: 480, y: 215, name: 'BASE' },
-      { id: 'star6', x: 600, y: 240, name: 'SOLANA' },
-      { id: 'star7', x: 200, y: 150, name: 'POLYGON' },
-      { id: 'star8', x: 220, y: 237.5, name: 'CELESTIA' },
-      { id: 'star9', x: 110, y: 290 , name: 'ETHEREUM' }
+      { id: 'star1', x: viewportWidth * .472, y: viewportHeight * .104, name: 'STARKNET' },
+      { id: 'star2', x: viewportWidth * .195, y: viewportHeight * .132, name: 'ECLIPSE' },
+      { id: 'star3', x: viewportWidth * .305, y: viewportHeight * .097, name: 'OPTIMISM' },
+      { id: 'star4', x: viewportWidth * .25, y: viewportHeight * .188, name: 'UNICHAIN' },
+      { id: 'star5', x: viewportWidth * .334, y: viewportHeight * .15, name: 'BASE' },
+      { id: 'star6', x: viewportWidth * .458, y: viewportHeight * .167, name: 'SOLANA' },
+      { id: 'star7', x: viewportWidth * .14, y: viewportHeight * .105, name: 'POLYGON' },
+      { id: 'star8', x: viewportWidth * .153, y: viewportHeight * .165, name: 'CELESTIA' },
+      { id: 'star9', x: viewportWidth * .77, y: viewportHeight * .202 , name: 'ETHEREUM' }
     ];
     
     const validCombinations = [
