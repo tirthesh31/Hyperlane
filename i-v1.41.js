@@ -19,12 +19,12 @@
     ];
     
     const validCombinations = [
-      { org: 'star6', dest: 'star2' , dataPackage: 'Renzo', headline:'Asset Issuance'}, // SOLANA - BASE
-      { org: 'star4', dest: 'star3' , dataPackage: 'Velodrome', headline:'Velodrome'}, // POLYGON - ETHEREUM
-      { org: 'star9', dest: 'star5' , dataPackage: 'Aave', headline:'Aave'}, // BNB CHAIN - ARBITRUM
-      { org: 'star6', dest: 'star2' , dataPackage: 'Renzo', headline:'Renzo'}, // SOLANA - BASE
-      { org: 'star4', dest: 'star3' , dataPackage: 'Velodrome', headline:'Apps'}, // POLYGON - ETHEREUM
-      { org: 'star9', dest: 'star5' , dataPackage: 'Aave', headline:'Governance'}, // BNB CHAIN - ARBITRUM
+      { org: 'star6', dest: 'star2' , dataPackage: 'RENZO', headline:'Asset Issuance'}, // SOLANA - BASE
+      { org: 'star4', dest: 'star3' , dataPackage: 'VELODROME', headline:'Velodrome'}, // POLYGON - ETHEREUM
+      { org: 'star9', dest: 'star5' , dataPackage: 'AAVE', headline:'Aave'}, // BNB CHAIN - ARBITRUM
+      { org: 'star6', dest: 'star2' , dataPackage: 'RENZO', headline:'Renzo'}, // SOLANA - BASE
+      { org: 'star4', dest: 'star3' , dataPackage: 'VELODROME', headline:'Apps'}, // POLYGON - ETHEREUM
+      { org: 'star9', dest: 'star5' , dataPackage: 'AAVE', headline:'Governance'}, // BNB CHAIN - ARBITRUM
     ];
 
     let currentCombinationIndex = 0;
@@ -125,7 +125,7 @@
         
         const orgText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         orgText.setAttribute("x", orgCenter.x);
-         orgText.setAttribute("y", orgCenter.y - 30);
+         orgText.setAttribute("y", orgCenter.y + 30);
         orgText.setAttribute("fill", "rgba(255, 255, 255, 0.60)");
         orgText.setAttribute("font-family", "Raleway, sans-serif");
         orgText.setAttribute("font-size", "9px");
@@ -218,7 +218,6 @@
         }
         
         orgContent.appendChild(originFrame);
-        orgContent.appendChild(orgText);
         orgContent.appendChild(orgGlow1);
         orgContent.appendChild(orgGlow2);
         orgContent.appendChild(orgCenter1);
@@ -226,6 +225,7 @@
         orgContent.appendChild(orgRing1);
         orgContent.appendChild(orgRing3);
         orgContent.appendChild(orgRotatingGroup);
+        orgContent.appendChild(orgText);
         group.appendChild(orgContent);
         
         // Create destination content (initially hidden)
