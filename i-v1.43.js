@@ -1339,7 +1339,7 @@
       // Intersection Observer to start/pause animation when section is in viewport
       const observer = new IntersectionObserver(function (entries) {
         if (entries[0].isIntersecting) {
-          resumeAnimation();
+          //resumeAnimation();
         } else {
           pauseAnimation();
         }
@@ -1379,7 +1379,7 @@
     
       // Start animation if section is in viewport
       if (isElementInViewport(sectionFooter)) {
-        startAnimation();
+        //startAnimation();
       }
     });
   
