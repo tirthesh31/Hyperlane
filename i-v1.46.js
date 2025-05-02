@@ -1244,24 +1244,34 @@
         }
       }
       
-      // Function to show specific case study and hide others
-      function showCaseStudy(num) {
-        // Hide all case studies first
-        caseStudy1.style.opacity = '0';
-        caseStudy2.style.opacity = '0';
-        caseStudy3.style.opacity = '0';
+     // Function to show specific case study and hide others
+    function showCaseStudy(num) {
+      // Set transition properties with ease-out
+      caseStudy1.style.transition = 'opacity 500ms ease-out';
+      caseStudy2.style.transition = 'opacity 500ms ease-out';
+      caseStudy3.style.transition = 'opacity 500ms ease-out';
+      
+      // Hide all case studies first
+      caseStudy1.style.opacity = '0';
+      caseStudy2.style.opacity = '0';
+      caseStudy3.style.opacity = '0';
+      
+      // After a short delay, change display property and show the selected one
+      setTimeout(() => {
+        // Set display property for each case study
+        caseStudy1.style.display = num === 1 ? 'block' : 'none';
+        caseStudy2.style.display = num === 2 ? 'block' : 'none';
+        caseStudy3.style.display = num === 3 ? 'block' : 'none';
         
-        // After a short delay, change display property and show the selected one
+        // Short delay to ensure display property has changed
         setTimeout(() => {
-          caseStudy2.style.display = num === 2 ? 'block' : 'none';
-          caseStudy3.style.display = num === 3 ? 'block' : 'none';
-          
           // Show the selected case study
           if (num === 1) caseStudy1.style.opacity = '1';
           if (num === 2) caseStudy2.style.opacity = '1';
           if (num === 3) caseStudy3.style.opacity = '1';
-        }, 300);
-      }
+        }, 10);
+      }, 500);
+    }
     
       // Animation loop function
       function animateLoaders(currentTime) {
