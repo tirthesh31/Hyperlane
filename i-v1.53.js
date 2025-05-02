@@ -1172,11 +1172,11 @@
           }
 
           if(viewportWidth < 768) {
-            const bodytext = col.classList.contains('col-send') ? '.body-main.col-send' :
-                            col.classList.contains('col-extend') ? '.body-main.col-extend' : 
+            const bodytext = this.classList.contains('col-send') ? '.body-main.col-send' :
+                            this.classList.contains('col-extend') ? '.body-main.col-extend' : 
                             '.body-main.col-participate';
-            const maintext = col.classList.contains('col-send') ? '.section-architecture-main-content-col-footer.col-send' :
-                            col.classList.contains('col-extend') ? '.section-architecture-main-content-col-footer.col-extend' : 
+            const maintext = this.classList.contains('col-send') ? '.section-architecture-main-content-col-footer.col-send' :
+                            this.classList.contains('col-extend') ? '.section-architecture-main-content-col-footer.col-extend' : 
                             '.section-architecture-main-content-col-footer.col-participate';
 
             const maintextcontainer = document.querySelector(maintext);
