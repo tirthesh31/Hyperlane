@@ -1110,9 +1110,9 @@
             }
 						
             // Find the image in this column and reset its opacity
-            const imageClass = col.classList.contains('col-send') ? '.architecture-image.send.desktop' : 
-                               col.classList.contains('col-extend') ? '.architecture-image.extend.desktop' : 
-                               '.architecture-image.participate.desktop';
+            const imageClass = col.classList.contains('col-send') ? '.architecture-image.send' : 
+                               col.classList.contains('col-extend') ? '.architecture-image.extend' : 
+                               '.architecture-image.participate';
             
             const image = document.querySelector(imageClass);
             if (image) {
@@ -1130,6 +1130,7 @@
             }
 
             if(viewportWidth < 768) {
+              col.style.borderColor = 'rgba(8, 20, 40, 0.15)';
               const bodytext = col.classList.contains('col-send') ? '.body-main.col-send' :
                               col.classList.contains('col-extend') ? '.body-main.col-extend' : 
                               '.body-main.col-participate';
@@ -1153,9 +1154,9 @@
           animate(this, parseFloat(this.style.opacity || 0.4), 1.0, 500);
 
 						// Find the image in this column and reset its opacity
-            const imageClass = this.classList.contains('col-send') ? '.architecture-image.send.desktop' : 
-                               this.classList.contains('col-extend') ? '.architecture-image.extend.desktop' : 
-                               '.architecture-image.participate.desktop';
+            const imageClass = this.classList.contains('col-send') ? '.architecture-image.send' : 
+                               this.classList.contains('col-extend') ? '.architecture-image.extend' : 
+                               '.architecture-image.participate';
             
             const image = document.querySelector(imageClass);
             if (image) {
@@ -1172,6 +1173,7 @@
           }
 
           if(viewportWidth < 768) {
+            this.style.borderColor = '#D631B9';
             const bodytext = this.classList.contains('col-send') ? '.body-main.col-send' :
                             this.classList.contains('col-extend') ? '.body-main.col-extend' : 
                             '.body-main.col-participate';
