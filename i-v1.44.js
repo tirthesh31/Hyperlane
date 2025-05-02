@@ -1332,9 +1332,7 @@
       
       // Set up mouseleave event to resume animation
       const sections = [section1, section2, section3];
-      sections.forEach(section => {
-        section.addEventListener('mouseleave', resumeAnimation);
-      });
+
     
       // Intersection Observer to start/pause animation when section is in viewport
       const observer = new IntersectionObserver(function (entries) {
