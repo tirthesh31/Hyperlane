@@ -5,28 +5,53 @@
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
-    // Configuration
-    const starSystems = [
-      { id: 'star1', x: viewportWidth * .440, y: viewportHeight * .2, name: 'STARKNET' },
-      { id: 'star2', x: viewportWidth * .185, y: viewportHeight * .252, name: 'ECLIPSE' },
-      { id: 'star3', x: viewportWidth * .291, y: viewportHeight * .186, name: 'OPTIMISM' },
-      { id: 'star4', x: viewportWidth * .238, y: viewportHeight * .358, name: 'UNICHAIN' },
-      { id: 'star5', x: viewportWidth * .317, y: viewportHeight * .286, name: 'BASE' },
-      { id: 'star6', x: viewportWidth * .385, y: viewportHeight * .32, name: 'SOLANA' },
-      { id: 'star7', x: viewportWidth * .132, y: viewportHeight * .2, name: 'POLYGON' },
-      { id: 'star8', x: viewportWidth * .146, y: viewportHeight * .315, name: 'CELESTIA' },
-      { id: 'star9', x: viewportWidth * .0736, y: viewportHeight * .386 , name: 'ETHEREUM' }
-    ];
+    let starSystems = [];
+    let validCombinations = [];
     
-    const validCombinations = [
-      { org: 'star6', dest: 'star2' , dataPackage: 'RENZO', headline:'Asset Issuance'}, // SOLANA - BASE
-      { org: 'star4', dest: 'star3' , dataPackage: 'VELODROME', headline:'Velodrome'}, // POLYGON - ETHEREUM
-      { org: 'star9', dest: 'star5' , dataPackage: 'AAVE', headline:'Aave'}, // BNB CHAIN - ARBITRUM
-      { org: 'star6', dest: 'star2' , dataPackage: 'RENZO', headline:'Renzo'}, // SOLANA - BASE
-      { org: 'star4', dest: 'star3' , dataPackage: 'VELODROME', headline:'Apps'}, // POLYGON - ETHEREUM
-      { org: 'star9', dest: 'star5' , dataPackage: 'AAVE', headline:'Governance'}, // BNB CHAIN - ARBITRUM
-    ];
+    if(viewportWidth < 800) {
+      const starSystems = [
+        { id: 'star1', x: viewportWidth * .185, y: viewportHeight * .252, name: 'ECLIPSE' },
+        { id: 'star2', x: viewportWidth * .291, y: viewportHeight * .186, name: 'OPTIMISM' },
+        { id: 'star3', x: viewportWidth * .238, y: viewportHeight * .358, name: 'UNICHAIN' },
+        { id: 'star4', x: viewportWidth * .385, y: viewportHeight * .32, name: 'SOLANA' },
+        { id: 'star5', x: viewportWidth * .0736, y: viewportHeight * .386 , name: 'ETHEREUM' }
+      ];
+    }else{
+      // Configuration
+      const starSystems = [
+        { id: 'star1', x: viewportWidth * .440, y: viewportHeight * .2, name: 'STARKNET' },
+        { id: 'star2', x: viewportWidth * .185, y: viewportHeight * .252, name: 'ECLIPSE' },
+        { id: 'star3', x: viewportWidth * .291, y: viewportHeight * .186, name: 'OPTIMISM' },
+        { id: 'star4', x: viewportWidth * .238, y: viewportHeight * .358, name: 'UNICHAIN' },
+        { id: 'star5', x: viewportWidth * .317, y: viewportHeight * .286, name: 'BASE' },
+        { id: 'star6', x: viewportWidth * .385, y: viewportHeight * .32, name: 'SOLANA' },
+        { id: 'star7', x: viewportWidth * .132, y: viewportHeight * .2, name: 'POLYGON' },
+        { id: 'star8', x: viewportWidth * .146, y: viewportHeight * .315, name: 'CELESTIA' },
+        { id: 'star9', x: viewportWidth * .0736, y: viewportHeight * .386 , name: 'ETHEREUM' }
+      ];
+    }
 
+    if(viewportWidth < 800) {
+      validCombinations = [
+        { org: 'star6', dest: 'star1' , dataPackage: 'RENZO', headline:'Asset Issuance'}, // SOLANA - BASE
+        { org: 'star2', dest: 'star3' , dataPackage: 'VELODROME', headline:'Velodrome'}, // POLYGON - ETHEREUM
+        { org: 'star6', dest: 'star1' , dataPackage: 'AAVE', headline:'Aave'}, // BNB CHAIN - ARBITRUM
+        { org: 'star2', dest: 'star3' , dataPackage: 'RENZO', headline:'Renzo'}, // SOLANA - BASE
+        { org: 'star6', dest: 'star1' , dataPackage: 'VELODROME', headline:'Apps'}, // POLYGON - ETHEREUM
+        { org: 'star2', dest: 'star3' , dataPackage: 'AAVE', headline:'Governance'}, // BNB CHAIN - ARBITRUM
+      ];
+    }
+    else{
+      validCombinations = [
+        { org: 'star6', dest: 'star2' , dataPackage: 'RENZO', headline:'Asset Issuance'}, // SOLANA - BASE
+        { org: 'star4', dest: 'star3' , dataPackage: 'VELODROME', headline:'Velodrome'}, // POLYGON - ETHEREUM
+        { org: 'star9', dest: 'star5' , dataPackage: 'AAVE', headline:'Aave'}, // BNB CHAIN - ARBITRUM
+        { org: 'star6', dest: 'star2' , dataPackage: 'RENZO', headline:'Renzo'}, // SOLANA - BASE
+        { org: 'star4', dest: 'star3' , dataPackage: 'VELODROME', headline:'Apps'}, // POLYGON - ETHEREUM
+        { org: 'star9', dest: 'star5' , dataPackage: 'AAVE', headline:'Governance'}, // BNB CHAIN - ARBITRUM
+      ];
+    }
+    
     let currentCombinationIndex = 0;
     let previousOrg = null;
     let previousDest = null;
