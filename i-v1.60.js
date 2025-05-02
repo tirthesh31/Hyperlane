@@ -5,20 +5,21 @@
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
+    // Declare variables once at the top scope
     let starSystems = [];
     let validCombinations = [];
-    
+
+    // Then assign values based on viewport width
     if(viewportWidth < 800) {
-      const starSystems = [
+      starSystems = [
         { id: 'star1', x: viewportWidth * .185, y: viewportHeight * .252, name: 'ECLIPSE' },
         { id: 'star2', x: viewportWidth * .291, y: viewportHeight * .186, name: 'OPTIMISM' },
         { id: 'star3', x: viewportWidth * .238, y: viewportHeight * .358, name: 'UNICHAIN' },
         { id: 'star4', x: viewportWidth * .385, y: viewportHeight * .32, name: 'SOLANA' },
         { id: 'star5', x: viewportWidth * .0736, y: viewportHeight * .386 , name: 'ETHEREUM' }
       ];
-    }else{
-      // Configuration
-      const starSystems = [
+    } else {
+      starSystems = [
         { id: 'star1', x: viewportWidth * .440, y: viewportHeight * .2, name: 'STARKNET' },
         { id: 'star2', x: viewportWidth * .185, y: viewportHeight * .252, name: 'ECLIPSE' },
         { id: 'star3', x: viewportWidth * .291, y: viewportHeight * .186, name: 'OPTIMISM' },
@@ -40,8 +41,7 @@
         { org: 'star6', dest: 'star1' , dataPackage: 'VELODROME', headline:'Apps'}, // POLYGON - ETHEREUM
         { org: 'star2', dest: 'star3' , dataPackage: 'AAVE', headline:'Governance'}, // BNB CHAIN - ARBITRUM
       ];
-    }
-    else{
+    } else {
       validCombinations = [
         { org: 'star6', dest: 'star2' , dataPackage: 'RENZO', headline:'Asset Issuance'}, // SOLANA - BASE
         { org: 'star4', dest: 'star3' , dataPackage: 'VELODROME', headline:'Velodrome'}, // POLYGON - ETHEREUM
