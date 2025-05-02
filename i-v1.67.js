@@ -501,7 +501,8 @@
       
       // Fixed starting point for navigation (530x, 430y)
       const startX = viewportWidth / 2;
-      const startY = viewportHeight * 65 / 100;
+      
+      const startY = viewportWidth < 800 ? viewportHeight * 65 / 100 : viewportHeight * 40 / 100;
 
       // const startX = 560;
       // const startY = 430;
