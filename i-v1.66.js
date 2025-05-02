@@ -500,11 +500,11 @@
       const destY = destStar.y + destCenter.y;
       
       // Fixed starting point for navigation (530x, 430y)
-      // const startX = viewportWidth / 2;
-      // const startY = viewportHeight * 65 / 100;
+      const startX = viewportWidth / 2;
+      const startY = viewportHeight * 65 / 100;
 
-      const startX = 560;
-      const startY = 430;
+      // const startX = 560;
+      // const startY = 430;
       
       // Calculate the key distances and angles for better path planning
       const startToOrgDist = Math.sqrt(Math.pow(orgX - startX, 2) + Math.pow(orgY - startY, 2));
