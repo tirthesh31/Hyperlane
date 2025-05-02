@@ -1216,7 +1216,6 @@
           section1.style.opacity = '100%';
           section2.style.opacity = '40%';
           section3.style.opacity = '40%';
-          showCaseStudy(1);
         } 
         else if (section === 2) {
           loader1.style.width = '100%';
@@ -1227,7 +1226,7 @@
           section1.style.opacity = '40%';
           section2.style.opacity = '100%';
           section3.style.opacity = '40%';
-          showCaseStudy(2);
+          
         } 
         else if (section === 3) {
           loader1.style.width = '100%';
@@ -1241,7 +1240,7 @@
           section3.style.opacity = '100%';
           loader1.style.width = '0%';
           
-          showCaseStudy(3);
+          
         }
       }
       
@@ -1323,12 +1322,25 @@
       function handleSectionHover(sectionNum) {
         pauseAnimation();
         updateUI(sectionNum);
+        
+      }
+
+      // Handle section hover
+      function handleSectionClicked(sectionNum) {
+        pauseAnimation();
+        updateUI(sectionNum);
+        showCaseStudy(sectionNum);
       }
     
       // Set up hover events
       section1.addEventListener('mouseenter', () => handleSectionHover(1));
       section2.addEventListener('mouseenter', () => handleSectionHover(2));
       section3.addEventListener('mouseenter', () => handleSectionHover(3));
+
+      // Set up click events
+      section1.addEventListener('click', () => handleSectionClicked(1));
+      section2.addEventListener('click', () => handleSectionClicked(2));
+      section3.addEventListener('click', () => handleSectionClicked(3));
       
       // Set up mouseleave event to resume animation
       const sections = [section1, section2, section3];
