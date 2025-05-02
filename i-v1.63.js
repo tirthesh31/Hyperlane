@@ -16,7 +16,7 @@
         { id: 'star2', x: viewportWidth * .24, y: viewportHeight * .405, name: 'OPTIMISM' },
         { id: 'star3', x: viewportWidth * .65, y: viewportHeight * .2, name: 'UNICHAIN' },
         { id: 'star4', x: viewportWidth * .65, y: viewportHeight * .415, name: 'SOLANA' },
-        { id: 'star5', x: viewportWidth * .30, y: viewportHeight * .386 , name: 'ETHEREUM' }
+        { id: 'star5', x: viewportWidth * .50, y: viewportHeight * .3 , name: 'ETHEREUM' }
       ];
     } else {
       starSystems = [
@@ -500,8 +500,8 @@
       const destY = destStar.y + destCenter.y;
       
       // Fixed starting point for navigation (530x, 430y)
-      const startX = 530;
-      const startY = 430;
+      const startX = viewportWidth / 2;
+      const startY = viewportHeight * 65 / 100;
       
       // Calculate the key distances and angles for better path planning
       const startToOrgDist = Math.sqrt(Math.pow(orgX - startX, 2) + Math.pow(orgY - startY, 2));
