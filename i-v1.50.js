@@ -1219,6 +1219,8 @@
           
           if(viewportWidth < 768) {
             section1.style.borderColor = '#D631B9';
+            section2.style.borderColor = 'rgba(8, 20, 40, 0.15)';
+            section3.style.borderColor = 'rgba(8, 20, 40, 0.15)';
           }
         } 
         else if (section === 2) {
@@ -1233,6 +1235,8 @@
 
           if(viewportWidth < 768) {
             section2.style.borderColor = '#D631B9';
+            section1.style.borderColor = 'rgba(8, 20, 40, 0.15)';
+            section3.style.borderColor = 'rgba(8, 20, 40, 0.15)';
           }
           
         } 
@@ -1250,6 +1254,8 @@
           
           if(viewportWidth < 768) {
             section3.style.borderColor = '#D631B9';
+            section1.style.borderColor = 'rgba(8, 20, 40, 0.15)';
+            section2.style.borderColor = 'rgba(8, 20, 40, 0.15)';
           }
         }
       }
