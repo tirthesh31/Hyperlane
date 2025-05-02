@@ -1109,22 +1109,25 @@
               animate(col, parseFloat(col.style.opacity || 0.4), 0.4, 500);
             }
 						
-            // Find the image in this column and reset its opacity
-            const imageClass = col.classList.contains('col-send') ? '.architecture-image.send.desktop' : 
-            col.classList.contains('col-extend') ? '.architecture-image.extend.desktop' : 
-            '.architecture-image.participate.desktop';
+            // Determine which image class to use based on viewport width and column
+            let imageClass;
 
             if(viewportWidth < 768) {
-                  // Find the image in this column and reset its opacity
-                const imageClass = col.classList.contains('col-send') ? '.architecture-image.send.mobile' : 
-                                    col.classList.contains('col-extend') ? '.architecture-image.extend.mobile' : 
-                                    '.architecture-image.participate.mobile';
+                // Use mobile image classes
+                imageClass = col.classList.contains('col-send') ? '.architecture-image.send.mobile' : 
+                            col.classList.contains('col-extend') ? '.architecture-image.extend.mobile' : 
+                            '.architecture-image.participate.mobile';
+            } else {
+                // Use desktop image classes
+                imageClass = col.classList.contains('col-send') ? '.architecture-image.send.desktop' : 
+                            col.classList.contains('col-extend') ? '.architecture-image.extend.desktop' : 
+                            '.architecture-image.participate.desktop';
             }
-            
-            
+
+            // Now find and animate the image
             const image = document.querySelector(imageClass);
             if (image) {
-              animate(image, parseFloat(this.style.opacity || 0.0), 0.0, 500);
+                animate(image, parseFloat(image.style.opacity || 0.0), 0.0, 500);
             }
 
             // Find the loader in this column and reset its width
@@ -1138,7 +1141,7 @@
             }
 
             if(viewportWidth < 768) {
-              col.style.borderColor = 'rgba(8, 20, 40, 0.15)';
+              col.style.borderColor = 'rgba(255, 255, 255, 0.15)';
               const bodytext = col.classList.contains('col-send') ? '.body-main.col-send' :
                               col.classList.contains('col-extend') ? '.body-main.col-extend' : 
                               '.body-main.col-participate';
@@ -1162,22 +1165,27 @@
           animate(this, parseFloat(this.style.opacity || 0.4), 1.0, 500);
 
 
-            // Find the image in this column and reset its opacity
-            const imageClass = this.classList.contains('col-send') ? '.architecture-image.send.desktop' : 
-            this.classList.contains('col-extend') ? '.architecture-image.extend.desktop' : 
-            '.architecture-image.participate.desktop';
-						
+           // Find the image in this column and set its opacity to 1
+            let imageClass;
+
             if(viewportWidth < 768) {
-              const imageClass = this.classList.contains('col-send') ? '.architecture-image.send.mobile' : 
-                                  this.classList.contains('col-extend') ? '.architecture-image.extend.mobile' : 
-                                  '.architecture-image.participate.mobile';
-            }
-            
-            const image = document.querySelector(imageClass);
-            if (image) {
-              animate(image, parseFloat(this.style.opacity || 0.0), 1, 500);
+                // Use mobile image classes
+                imageClass = this.classList.contains('col-send') ? '.architecture-image.send.mobile' : 
+                            this.classList.contains('col-extend') ? '.architecture-image.extend.mobile' : 
+                            '.architecture-image.participate.mobile';
+            } else {
+                // Use desktop image classes
+                imageClass = this.classList.contains('col-send') ? '.architecture-image.send.desktop' : 
+                            this.classList.contains('col-extend') ? '.architecture-image.extend.desktop' : 
+                            '.architecture-image.participate.desktop';
             }
 
+            // Now find and animate the image
+            const image = document.querySelector(imageClass);
+            if (image) {
+                animate(image, parseFloat(image.style.opacity || 0.0), 1, 500);
+            }
+            
           // Find the loader in this column and set its width to 100%
           const loaderClass = this.classList.contains('col-send') ? '.loader-container-send' : 
                              this.classList.contains('col-extend') ? '.loader-container-extend' : 
