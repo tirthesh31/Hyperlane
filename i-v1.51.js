@@ -1137,10 +1137,13 @@
                               col.classList.contains('col-extend') ? '.section-architecture-main-content-col-footer.col-extend' : 
                               '.section-architecture-main-content-col-footer.col-participate';
 
-              maintext.style.opacity = '0';
-              bodytext.style.opacity = '0';
-              maintext.style.display = 'none';
-              bodytext.style.display = 'none';
+              const maintextcontainer = document.querySelector(maintext);
+              const bodytextcontainer = document.querySelector(bodytext);
+
+              maintextcontainer.style.opacity = '0';
+              bodytextcontainer.style.opacity = '0';
+              maintextcontainer.style.display = 'none';
+              bodytextcontainer.style.display = 'none';
 
             }
           });
@@ -1176,10 +1179,12 @@
                             col.classList.contains('col-extend') ? '.section-architecture-main-content-col-footer.col-extend' : 
                             '.section-architecture-main-content-col-footer.col-participate';
 
-            maintext.style.opacity = '1';
-            bodytext.style.opacity = '1';
-            maintext.style.display = 'block';
-            bodytext.style.display = 'block';
+            const maintextcontainer = document.querySelector(maintext);
+            const bodytextcontainer = document.querySelector(bodytext);
+            maintextcontainer.style.opacity = '1';
+            bodytextcontainer.style.opacity = '1';
+            maintextcontainer.style.display = 'block';
+            bodytextcontainer.style.display = 'block';
 
           }
         });
