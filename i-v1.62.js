@@ -12,11 +12,11 @@
     // Then assign values based on viewport width
     if(viewportWidth < 800) {
       starSystems = [
-        { id: 'star1', x: viewportWidth * .185, y: viewportHeight * .252, name: 'ECLIPSE' },
-        { id: 'star2', x: viewportWidth * .291, y: viewportHeight * .186, name: 'OPTIMISM' },
-        { id: 'star3', x: viewportWidth * .238, y: viewportHeight * .358, name: 'UNICHAIN' },
-        { id: 'star4', x: viewportWidth * .385, y: viewportHeight * .32, name: 'SOLANA' },
-        { id: 'star5', x: viewportWidth * .0736, y: viewportHeight * .386 , name: 'ETHEREUM' }
+        { id: 'star1', x: viewportWidth * .185, y: viewportHeight * .19, name: 'ECLIPSE' },
+        { id: 'star2', x: viewportWidth * .24, y: viewportHeight * .405, name: 'OPTIMISM' },
+        { id: 'star3', x: viewportWidth * .65, y: viewportHeight * .2, name: 'UNICHAIN' },
+        { id: 'star4', x: viewportWidth * .65, y: viewportHeight * .415, name: 'SOLANA' },
+        { id: 'star5', x: viewportWidth * .30, y: viewportHeight * .386 , name: 'ETHEREUM' }
       ];
     } else {
       starSystems = [
