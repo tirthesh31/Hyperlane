@@ -1216,6 +1216,10 @@
           section1.style.opacity = '100%';
           section2.style.opacity = '40%';
           section3.style.opacity = '40%';
+          
+          if(viewportWidth < 768) {
+            section1.style.bordercolor = '#D631B9';
+          }
         } 
         else if (section === 2) {
           loader1.style.width = '100%';
@@ -1226,6 +1230,10 @@
           section1.style.opacity = '40%';
           section2.style.opacity = '100%';
           section3.style.opacity = '40%';
+
+          if(viewportWidth < 768) {
+            section2.style.bordercolor = '#D631B9';
+          }
           
         } 
         else if (section === 3) {
@@ -1240,7 +1248,9 @@
           section3.style.opacity = '100%';
           loader1.style.width = '0%';
           
-          
+          if(viewportWidth < 768) {
+            section3.style.bordercolor = '#D631B9';
+          }
         }
       }
       
