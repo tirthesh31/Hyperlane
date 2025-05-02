@@ -1128,6 +1128,21 @@
             if (loader) {
               animateLoader(loader, 0, 500); // Reset loader width with animation
             }
+
+            if(viewportWidth < 768) {
+              const bodytext = col.classList.contains('col-send') ? '.body-main.col-send' :
+                              col.classList.contains('col-extend') ? '.body-main.col-extend' : 
+                              '.body-main.col-participate';
+              const maintext = col.classList.contains('col-send') ? '.section-architecture-main-content-col-footer.col-send' :
+                              col.classList.contains('col-extend') ? '.section-architecture-main-content-col-footer.col-extend' : 
+                              '.section-architecture-main-content-col-footer.col-participate';
+
+              maintext.style.opacity = '0';
+              bodytext.style.opacity = '0';
+              maintext.style.display = 'none';
+              bodytext.style.display = 'none';
+
+            }
           });
 
           // Add active class to clicked column and animate opacity
@@ -1151,6 +1166,21 @@
           const loader = document.querySelector(loaderClass);
           if (loader ) {
             animateLoader(loader, 100, 500); // Animate to 100% width
+          }
+
+          if(viewportWidth < 768) {
+            const bodytext = col.classList.contains('col-send') ? '.body-main.col-send' :
+                            col.classList.contains('col-extend') ? '.body-main.col-extend' : 
+                            '.body-main.col-participate';
+            const maintext = col.classList.contains('col-send') ? '.section-architecture-main-content-col-footer.col-send' :
+                            col.classList.contains('col-extend') ? '.section-architecture-main-content-col-footer.col-extend' : 
+                            '.section-architecture-main-content-col-footer.col-participate';
+
+            maintext.style.opacity = '1';
+            bodytext.style.opacity = '1';
+            maintext.style.display = 'block';
+            bodytext.style.display = 'block';
+
           }
         });
       });
