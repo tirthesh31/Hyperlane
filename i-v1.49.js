@@ -1218,7 +1218,7 @@
           section3.style.opacity = '40%';
           
           if(viewportWidth < 768) {
-            section1.style.bordercolor = '#D631B9';
+            section1.style.borderColor = '#D631B9';
           }
         } 
         else if (section === 2) {
@@ -1232,7 +1232,7 @@
           section3.style.opacity = '40%';
 
           if(viewportWidth < 768) {
-            section2.style.bordercolor = '#D631B9';
+            section2.style.borderColor = '#D631B9';
           }
           
         } 
@@ -1249,7 +1249,7 @@
           loader1.style.width = '0%';
           
           if(viewportWidth < 768) {
-            section3.style.bordercolor = '#D631B9';
+            section3.style.borderColor = '#D631B9';
           }
         }
       }
