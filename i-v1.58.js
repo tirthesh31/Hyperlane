@@ -1141,6 +1141,8 @@
             }
 
             if(viewportWidth < 768) {
+              col.style.borderBottomWidth = '1px';
+              col.style.borderBottomStyle = 'solid';
               col.style.borderColor = 'rgba(255, 255, 255, 0.15)';
               const bodytext = col.classList.contains('col-send') ? '.body-main.col-send' :
                               col.classList.contains('col-extend') ? '.body-main.col-extend' : 
