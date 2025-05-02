@@ -34,11 +34,11 @@
 
     if(viewportWidth < 800) {
       validCombinations = [
-        { org: 'star6', dest: 'star1' , dataPackage: 'RENZO', headline:'Asset Issuance'}, // SOLANA - BASE
+        { org: 'star4', dest: 'star1' , dataPackage: 'RENZO', headline:'Asset Issuance'}, // SOLANA - BASE
         { org: 'star2', dest: 'star3' , dataPackage: 'VELODROME', headline:'Velodrome'}, // POLYGON - ETHEREUM
-        { org: 'star6', dest: 'star1' , dataPackage: 'AAVE', headline:'Aave'}, // BNB CHAIN - ARBITRUM
+        { org: 'star4', dest: 'star1' , dataPackage: 'AAVE', headline:'Aave'}, // BNB CHAIN - ARBITRUM
         { org: 'star2', dest: 'star3' , dataPackage: 'RENZO', headline:'Renzo'}, // SOLANA - BASE
-        { org: 'star6', dest: 'star1' , dataPackage: 'VELODROME', headline:'Apps'}, // POLYGON - ETHEREUM
+        { org: 'star4', dest: 'star1' , dataPackage: 'VELODROME', headline:'Apps'}, // POLYGON - ETHEREUM
         { org: 'star2', dest: 'star3' , dataPackage: 'AAVE', headline:'Governance'}, // BNB CHAIN - ARBITRUM
       ];
     } else {
