@@ -524,6 +524,7 @@
       // const maxCurveIntensity = svgWidth * 0.02; // Reduced from 0.15 to 0.08
       // const curveIntensity = Math.min(totalDist * 0.02, maxCurveIntensity); // Reduced from 0.25 to 0.15
 
+      const distance = Math.sqrt(dirX * dirX + dirY * dirY);
       // S-curve control points
       const curveOffset1 = Math.min(100, distance * 0.3);  // Smaller near origin
       const curveOffset2 = Math.min(300, distance * 0.8);  // Larger near destination
