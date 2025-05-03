@@ -898,7 +898,7 @@
             motionPath: {
               path: navPath,
               align: navPath ,
-              alignOrigin: [0.5, 0.4],
+              alignOrigin: [0.5, 0.6],
               start: 0, // Start from org position
               end: 1 // End at dest
             },
@@ -926,7 +926,7 @@
             motionPath: {
               path: navPath,
               align: navPath,
-              alignOrigin: [0.5, 0.5],
+              alignOrigin: [0.5, 0.6],
               start: 0, // Start from org position
               end: 1
             },
