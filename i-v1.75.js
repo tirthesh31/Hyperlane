@@ -878,15 +878,15 @@
       
       // Get the current org star's position
       const orgStar = starSystems[currentOrg];
-      const orgStartX = orgStar.x;
-      const orgStartY = orgStar.y;
+      const orgStartX = orgStar.x + orgCenter.x;
+      const orgStartY = orgStar.y + orgCenter.y;
       
       // Position and animate each main data package along the path
       mainPackages.forEach((pkg, index) => {
         // Position the package at the org symbol position
         tl.set(pkg, {
-          x: orgStartX - 13.5, // Center the data package (half of width)
-          y: orgStartY - 13.5, // Center the data package (half of height)
+          x: orgStartX, // Center the data package (half of width)
+          y: orgStartY, // Center the data package (half of height)
           opacity: 1, // Start fully visible
           scale: 0.8, // Start at normal scale
           rotation: Math.random() * 30 - 15 // Random rotation between -15 and 15 degrees
