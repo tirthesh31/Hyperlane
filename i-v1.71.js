@@ -500,9 +500,9 @@
       const destY = destStar.y + destCenter.y;
       
       // Fixed starting point for navigation (530x, 430y)
-      const startX = orgCenter.x ;//viewportWidth < 800 ? viewportWidth / 2 : viewportWidth * 40 / 100;
+      const startX = orgStar.x ;//viewportWidth < 800 ? viewportWidth / 2 : viewportWidth * 40 / 100;
       
-      const startY = orgCenter.y ;//viewportHeight * 65 / 100 ;
+      const startY = orgStar.y ;//viewportHeight * 65 / 100 ;
 
       // const startX = 560;
       // const startY = 430;
@@ -517,37 +517,27 @@
       const dirY = destY - startY;
       const angle = Math.atan2(dirY, dirX);
       
-      // Calculate perpendicular vector for S-curve
-      const perpX = Math.cos(angle + Math.PI/2);
-      const perpY = Math.sin(angle + Math.PI/2);
-      
       // Calculate curve intensity based on total distance but constrained
       const svg = document.querySelector('svg');
       const svgWidth = svg.viewBox.baseVal.width;
-      const maxCurveIntensity = svgWidth * 0.02; // Reduced from 0.15 to 0.08
-      const curveIntensity = Math.min(totalDist * 0.02, maxCurveIntensity); // Reduced from 0.25 to 0.15
-      
-      // Calculate control points for a more contained S curve
-      // First curve - upper part of S
-      const ctrl1X = startX + dirX * 0.3 + perpX * curveIntensity;
-      const ctrl1Y = startY + dirY * 0.3 + perpY * curveIntensity;
-      
-      const ctrl2X = startX + dirX * 0.4 + perpX * curveIntensity;
-      const ctrl2Y = startY + dirY * 0.4 + perpY * curveIntensity;
-      
-      // Second curve - lower part of S
-      const ctrl3X = startX + dirX * 0.6 - perpX * curveIntensity;
-      const ctrl3Y = startY + dirY * 0.6 - perpY * curveIntensity;
-      
-      const ctrl4X = startX + dirX * 0.7 - perpX * curveIntensity;
-      const ctrl4Y = startY + dirY * 0.7 - perpY * curveIntensity;
-      
-      // Create a single fluid S curve
-      const pathString = `
-        M ${startX} ${startY}
-        C ${ctrl1X} ${ctrl1Y}, ${ctrl2X} ${ctrl2Y}, ${orgX} ${orgY}
-        S ${ctrl4X} ${ctrl4Y}, ${destX} ${destY}
-      `.trim().replace(/\s+/g, ' ');
+      // if the curve intensity is too high, reduce it
+      // const maxCurveIntensity = svgWidth * 0.02; // Reduced from 0.15 to 0.08
+      // const curveIntensity = Math.min(totalDist * 0.02, maxCurveIntensity); // Reduced from 0.25 to 0.15
+
+      // S-curve control points
+      const curveOffset1 = Math.min(100, distance * 0.3);  // Smaller near origin
+      const curveOffset2 = Math.min(300, distance * 0.8);  // Larger near destination
+      const perpX = Math.cos(angle + Math.PI / 2);
+      const perpY = Math.sin(angle + Math.PI / 2);
+      // Control point 1: 1/3 along the line, smaller offset
+      const ctrl1X = startX + dirX * (1/3) + perpX * curveOffset1;
+      const ctrl1Y = startY + dirY * (1/3) + perpY * curveOffset1;
+      // Control point 2: 2/3 along the line, larger offset
+      const ctrl2X = startX + dirX * (2/3) - perpX * curveOffset2;
+      const ctrl2Y = startY + dirY * (2/3) - perpY * curveOffset2;
+
+      // Create a beautiful S-curve
+      const pathString = `M ${startX} ${startY} C ${ctrl1X} ${ctrl1Y}, ${ctrl2X} ${ctrl2Y}, ${destX} ${destY}`;
       
       navLine.setAttribute("d", pathString);
       navLine.setAttribute("stroke-width", "2");
@@ -885,17 +875,17 @@
       const mainPackages = document.querySelectorAll(".main-data-package-0, .main-data-package-1");
       const navPath = document.querySelector(".nav-line path");
       
-      // Get the current org star's position
-      const orgStar = starSystems[currentOrg];
-      const orgStartX = orgStar.x;
-      const orgStartY = orgStar.y;
+      // // Get the current org star's position
+      // const orgStar = starSystems[currentOrg];
+      // const orgStartX = orgStar.x;
+      // const orgStartY = orgStar.y;
       
       // Position and animate each main data package along the path
       mainPackages.forEach((pkg, index) => {
         // Position the package at the org symbol position
         tl.set(pkg, {
-          x: orgStartX, // Center the data package (half of width)
-          y: orgStartY, // Center the data package (half of height)
+          x: orgX - 13.5, // Center the data package (half of width)
+          y: orgY - 13.5, // Center the data package (half of height)
           opacity: 1, // Start fully visible
           scale: 0.8, // Start at normal scale
           rotation: Math.random() * 30 - 15 // Random rotation between -15 and 15 degrees
