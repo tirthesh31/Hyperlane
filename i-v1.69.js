@@ -216,7 +216,7 @@
         // Create 25 rectangles arranged in an arc
         const totalRects = 20;
         const radius = 12; // Distance from center to rectangles
-        const arcStart = -35; // Start angle in degrees
+        const arcStart = -90; // Start angle in degrees
         const arcEnd = 90; // End angle in degrees
         const angleStep = (arcEnd - arcStart) / (totalRects - 1);
         const gapMultiplier = 1; // Increase this to create bigger gaps
@@ -500,9 +500,9 @@
       const destY = destStar.y + destCenter.y;
       
       // Fixed starting point for navigation (530x, 430y)
-      const startX = viewportWidth < 800 ? viewportWidth / 2 : viewportWidth * 40 / 100;
+      const startX = orgStar.x ;//viewportWidth < 800 ? viewportWidth / 2 : viewportWidth * 40 / 100;
       
-      const startY = viewportHeight * 65 / 100 ;
+      const startY = orgStar.y ;//viewportHeight * 65 / 100 ;
 
       // const startX = 560;
       // const startY = 430;
@@ -908,7 +908,7 @@
               path: navPath,
               align: navPath,
               alignOrigin: [0.5, 0.5],
-              start: 0.40, // Start from org position (approximately 1/3 of the path)
+              start: 0, // Start from org position
               end: 1 // End at dest
             },
             duration: 1.2, // Reduced from 2.0
@@ -936,7 +936,7 @@
               path: navPath,
               align: navPath,
               alignOrigin: [0.5, 0.5],
-              start: 0.4, // Start from org position (approximately 1/3 of the path)
+              start: 0, // Start from org position
               end: 1
             },
             duration: 1.8, // Reduced from 2.8
