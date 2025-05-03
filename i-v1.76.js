@@ -500,9 +500,9 @@
       const destY = destStar.y + destCenter.y;
       
       // Fixed starting point for navigation (530x, 430y)
-      const startX = orgStar.x ;//viewportWidth < 800 ? viewportWidth / 2 : viewportWidth * 40 / 100;
+      const startX = orgX ;//viewportWidth < 800 ? viewportWidth / 2 : viewportWidth * 40 / 100;
       
-      const startY = orgStar.y ;//viewportHeight * 65 / 100 ;
+      const startY = orgY ;//viewportHeight * 65 / 100 ;
 
       // const startX = 560;
       // const startY = 430;
