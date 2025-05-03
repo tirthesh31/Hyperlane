@@ -886,7 +886,7 @@
         // Position the package at the org symbol position
         tl.set(pkg, {
           x: orgStartX, // Center the data package (half of width)
-          y: 20, // Center the data package (half of height)
+          y: orgStartY, // Center the data package (half of height)
           opacity: 1, // Start fully visible
           scale: 0.8, // Start at normal scale
           rotation: Math.random() * 30 - 15 // Random rotation between -15 and 15 degrees
@@ -897,7 +897,7 @@
           tl.to(pkg, {
             motionPath: {
               path: navPath,
-              align: navPath,
+              align: navPath - 15,
               alignOrigin: [0.5, 0.5],
               start: 0, // Start from org position
               end: 1 // End at dest
