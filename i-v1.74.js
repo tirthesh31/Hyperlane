@@ -876,17 +876,17 @@
       const mainPackages = document.querySelectorAll(".main-data-package-0, .main-data-package-1");
       const navPath = document.querySelector(".nav-line path");
       
-      // // Get the current org star's position
-      // const orgStar = starSystems[currentOrg];
-      // const orgStartX = orgStar.x;
-      // const orgStartY = orgStar.y;
+      // Get the current org star's position
+      const orgStar = starSystems[currentOrg];
+      const orgStartX = orgStar.x;
+      const orgStartY = orgStar.y;
       
       // Position and animate each main data package along the path
       mainPackages.forEach((pkg, index) => {
         // Position the package at the org symbol position
         tl.set(pkg, {
-          x: orgStar.x - 13.5, // Center the data package (half of width)
-          y: orgStar.y - 13.5, // Center the data package (half of height)
+          x: orgStartX - 13.5, // Center the data package (half of width)
+          y: orgStartY - 13.5, // Center the data package (half of height)
           opacity: 1, // Start fully visible
           scale: 0.8, // Start at normal scale
           rotation: Math.random() * 30 - 15 // Random rotation between -15 and 15 degrees
