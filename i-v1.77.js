@@ -886,7 +886,7 @@
         // Position the package at the org symbol position
         tl.set(pkg, {
           x: orgStartX, // Center the data package (half of width)
-          y: orgStartY, // Center the data package (half of height)
+          y: orgStartY - 10, // Center the data package (half of height)
           opacity: 1, // Start fully visible
           scale: 0.8, // Start at normal scale
           rotation: Math.random() * 30 - 15 // Random rotation between -15 and 15 degrees
