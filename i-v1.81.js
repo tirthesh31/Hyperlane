@@ -897,7 +897,7 @@
           tl.to(pkg, {
             motionPath: {
               path: navPath,
-              align: navPath - 15,
+              align: navPath + 5,
               alignOrigin: [0.5, 0.5],
               start: 0, // Start from org position
               end: 1 // End at dest
