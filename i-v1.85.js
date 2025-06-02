@@ -2,7 +2,7 @@
     // Register plugins
     gsap.registerPlugin(MotionPathPlugin);
     
-    const viewportWidth = window.innerWidth;
+    const viewportWidth = window.innerWidth > 1600 ? 1600 : window.innerWidth;
     const viewportHeight = window.innerHeight > 900 ? 900 : window.innerHeight;
 
 
