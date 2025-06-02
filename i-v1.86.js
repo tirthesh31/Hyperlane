@@ -2,8 +2,20 @@
     // Register plugins
     gsap.registerPlugin(MotionPathPlugin);
     
-    const viewportWidth = window.innerWidth > 1600 ? 1600 : window.innerWidth;
-    const viewportHeight = window.innerHeight > 900 ? 900 : window.innerHeight;
+    const viewportWidth = window.innerWidth ;
+    const viewportHeight = window.innerHeight;
+
+    // Define your reference resolution (where it looks good)
+    const REFERENCE_WIDTH = 1440;
+    const REFERENCE_HEIGHT = 900;
+
+    // Calculate scale factors - using uniform scaling to maintain proportions
+    const scaleX = Math.min(viewportWidth / REFERENCE_WIDTH, viewportHeight / REFERENCE_HEIGHT);
+    const scaleY = scaleX; // Use same scale to maintain aspect ratio
+
+    // Center the coordinate system
+    const offsetX = (viewportWidth - REFERENCE_WIDTH * scaleX) / 2;
+    const offsetY = (viewportHeight - REFERENCE_HEIGHT * scaleY) / 2;
 
 
     // Declare variables once at the top scope
@@ -20,16 +32,62 @@
         { id: 'star5', x: viewportWidth * .488, y: viewportHeight * .32 , name: 'ETHEREUM' }
       ];
     } else {
-      starSystems = [
-        { id: 'star1', x: viewportWidth * .440, y: viewportHeight * .2, name: 'STARKNET' },
-        { id: 'star2', x: viewportWidth * .185, y: viewportHeight * .252, name: 'ECLIPSE' },
-        { id: 'star3', x: viewportWidth * .291, y: viewportHeight * .186, name: 'OPTIMISM' },
-        { id: 'star4', x: viewportWidth * .238, y: viewportHeight * .358, name: 'UNICHAIN' },
-        { id: 'star5', x: viewportWidth * .317, y: viewportHeight * .286, name: 'BASE' },
-        { id: 'star6', x: viewportWidth * .385, y: viewportHeight * .32, name: 'SOLANA' },
-        { id: 'star7', x: viewportWidth * .132, y: viewportHeight * .2, name: 'POLYGON' },
-        { id: 'star8', x: viewportWidth * .146, y: viewportHeight * .315, name: 'CELESTIA' },
-        { id: 'star9', x: viewportWidth * .0736, y: viewportHeight * .386 , name: 'ETHEREUM' }
+      // Your original star positions scaled and centered
+      const starSystems = [
+        { 
+          id: 'star1', 
+          x: offsetX + (REFERENCE_WIDTH * 0.440 * scaleX), 
+          y: offsetY + (REFERENCE_HEIGHT * 0.2 * scaleY), 
+          name: 'STARKNET' 
+        },
+        { 
+          id: 'star2', 
+          x: offsetX + (REFERENCE_WIDTH * 0.185 * scaleX), 
+          y: offsetY + (REFERENCE_HEIGHT * 0.252 * scaleY), 
+          name: 'ECLIPSE' 
+        },
+        { 
+          id: 'star3', 
+          x: offsetX + (REFERENCE_WIDTH * 0.291 * scaleX), 
+          y: offsetY + (REFERENCE_HEIGHT * 0.186 * scaleY), 
+          name: 'OPTIMISM' 
+        },
+        { 
+          id: 'star4', 
+          x: offsetX + (REFERENCE_WIDTH * 0.238 * scaleX), 
+          y: offsetY + (REFERENCE_HEIGHT * 0.358 * scaleY), 
+          name: 'UNICHAIN' 
+        },
+        { 
+          id: 'star5', 
+          x: offsetX + (REFERENCE_WIDTH * 0.317 * scaleX), 
+          y: offsetY + (REFERENCE_HEIGHT * 0.286 * scaleY), 
+          name: 'BASE' 
+        },
+        { 
+          id: 'star6', 
+          x: offsetX + (REFERENCE_WIDTH * 0.385 * scaleX), 
+          y: offsetY + (REFERENCE_HEIGHT * 0.32 * scaleY), 
+          name: 'SOLANA' 
+        },
+        { 
+          id: 'star7', 
+          x: offsetX + (REFERENCE_WIDTH * 0.132 * scaleX), 
+          y: offsetY + (REFERENCE_HEIGHT * 0.2 * scaleY), 
+          name: 'POLYGON' 
+        },
+        { 
+          id: 'star8', 
+          x: offsetX + (REFERENCE_WIDTH * 0.146 * scaleX), 
+          y: offsetY + (REFERENCE_HEIGHT * 0.315 * scaleY), 
+          name: 'CELESTIA' 
+        },
+        { 
+          id: 'star9', 
+          x: offsetX + (REFERENCE_WIDTH * 0.0736 * scaleX), 
+          y: offsetY + (REFERENCE_HEIGHT * 0.386 * scaleY), 
+          name: 'ETHEREUM' 
+        }
       ];
     }
 
