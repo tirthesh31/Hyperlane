@@ -33,7 +33,7 @@
       ];
     } else {
       // Your original star positions scaled and centered
-      const starSystems = [
+      starSystems = [
         { 
           id: 'star1', 
           x: offsetX + (REFERENCE_WIDTH * 0.440 * scaleX), 
