@@ -3,7 +3,8 @@
     gsap.registerPlugin(MotionPathPlugin);
     
     const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
+    const viewportHeight = window.innerHeight > 900 ? 900 : window.innerHeight;
+
 
     // Declare variables once at the top scope
     let starSystems = [];
