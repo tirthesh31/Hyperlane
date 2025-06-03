@@ -9,7 +9,7 @@
     }else{
       viewportHeight = window.innerHeight > 900 ? 900 : window.innerHeight;
     }
-
+    debugger;
     // Declare variables once at the top scope
     let starSystems = [];
     let validCombinations = [];
