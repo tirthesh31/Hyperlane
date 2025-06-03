@@ -6,6 +6,7 @@
     let viewportHeight;
     if(viewportWidth < 800) {
       viewportHeight = window.innerHeight;
+      document.getElementById("space-map").removeAttribute("viewBox");
     }else{
       viewportHeight = window.innerHeight > 900 ? 900 : window.innerHeight;
     }
