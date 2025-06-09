@@ -1183,8 +1183,8 @@ columns.forEach(column => {
         // Hide text for non-active columns
         maintextcontainer.style.opacity = '0';
         bodytextcontainer.style.opacity = '0';
-        maintextcontainer.style.display = 'flex';
-        bodytextcontainer.style.display = 'flex';
+        maintextcontainer.style.display = 'none';
+        bodytextcontainer.style.display = 'none';
       }
     });
 
@@ -1238,7 +1238,7 @@ columns.forEach(column => {
       maintextcontainer.style.opacity = '1';
       bodytextcontainer.style.opacity = '1';
       maintextcontainer.style.display = 'flex';
-      bodytextcontainer.style.display = 'flex';
+      bodytextcontainer.style.display = 'block';
     }
   });
 });
