@@ -1297,10 +1297,12 @@
         
         // Update loaders based on current section
         if (section === 1) {
-          loader1.style.width = isHover ? '0%' : '100%';
-          loader1.style.opacity = isHover ? '1' : '0';
-          loader2.style.width = '0%';
-          loader3.style.width = '0%';
+          if(!isHover) {
+            loader1.style.width =  '100%';
+            loader1.style.opacity =  '1';
+            loader2.style.width = '0%';
+            loader3.style.width = '0%';
+          }
           section1.style.opacity = '100%';
           section2.style.opacity = '40%';
           section3.style.opacity = '40%';
@@ -1312,11 +1314,13 @@
           }
         } 
         else if (section === 2) {
-          loader1.style.width =  isHover ? '00%' : '100%';
-          loader1.style.opacity = '0';
-          loader2.style.width =  isHover ? '00%' : '100%';
-          loader2.style.opacity = '1';
-          loader3.style.width = '0%';
+          if(!isHover) {
+            loader1.style.width =  '0%';
+            loader1.style.opacity = '0';
+            loader2.style.width =  '100%';
+            loader2.style.opacity = '1';
+            loader3.style.width = '0%';
+          }
           section1.style.opacity = '40%';
           section2.style.opacity = '100%';
           section3.style.opacity = '40%';
@@ -1329,12 +1333,14 @@
           
         } 
         else if (section === 3) {
-          loader1.style.width =  isHover ? '0%' : '100%';
-          loader1.style.opacity = '0';
-          loader2.style.width =  isHover ? '0%' : '100%';
-          loader2.style.opacity = '0';
-          loader3.style.width =  isHover ? '0%' : '100%';
-          loader3.style.opacity = '1';
+          if(!isHover) {
+            loader1.style.width =  '0%';
+            loader1.style.opacity = '0';
+            loader2.style.width =   '0%';
+            loader2.style.opacity = '0';
+            loader3.style.width =  '100%';
+            loader3.style.opacity = '1';
+          }
           section1.style.opacity = '40%';
           section2.style.opacity = '40%';
           section3.style.opacity = '100%';
