@@ -1432,15 +1432,17 @@
       }
     
       // Handle section hover
-      function handleSectionHover(sectionNum) {
+      function handleSectionHover(sectionNum,isHover) {
         pauseAnimation();
-        updateUI(sectionNum);
+        debugger;
+        updateUI(sectionNum,isHover);
         
       }
 
       // Handle section hover
       function handleSectionClicked(sectionNum,isHover) {
         pauseAnimation();
+        debugger;
         updateUI(sectionNum,isHover);
         showCaseStudy(sectionNum, isHover);
       }
