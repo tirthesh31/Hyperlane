@@ -1170,21 +1170,6 @@
               col.style.borderBottomWidth = '1px';
               col.style.borderBottomStyle = 'solid';
               col.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-              const bodytext = col.classList.contains('col-send') ? '.body-main.col-send' :
-                              col.classList.contains('col-extend') ? '.body-main.col-extend' : 
-                              '.body-main.col-participate';
-              const maintext = col.classList.contains('col-send') ? '.section-architecture-main-content-col-footer.col-send' :
-                              col.classList.contains('col-extend') ? '.section-architecture-main-content-col-footer.col-extend' : 
-                              '.section-architecture-main-content-col-footer.col-participate';
-
-              const maintextcontainer = document.querySelector(maintext);
-              const bodytextcontainer = document.querySelector(bodytext);
-
-              maintextcontainer.style.opacity = '0';
-              bodytextcontainer.style.opacity = '0';
-              maintextcontainer.style.display = 'none';
-              bodytextcontainer.style.display = 'none';
-
             }
           });
 
@@ -1225,20 +1210,6 @@
 
           if(viewportWidth < 768) {
             this.style.borderColor = '#D631B9';
-            const bodytext = this.classList.contains('col-send') ? '.body-main.col-send' :
-                            this.classList.contains('col-extend') ? '.body-main.col-extend' : 
-                            '.body-main.col-participate';
-            const maintext = this.classList.contains('col-send') ? '.section-architecture-main-content-col-footer.col-send' :
-                            this.classList.contains('col-extend') ? '.section-architecture-main-content-col-footer.col-extend' : 
-                            '.section-architecture-main-content-col-footer.col-participate';
-
-            const maintextcontainer = document.querySelector(maintext);
-            const bodytextcontainer = document.querySelector(bodytext);
-            maintextcontainer.style.opacity = '1';
-            bodytextcontainer.style.opacity = '1';
-            maintextcontainer.style.display = 'block';
-            bodytextcontainer.style.display = 'block';
-
           }
         });
       });
