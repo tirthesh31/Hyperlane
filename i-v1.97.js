@@ -1127,118 +1127,121 @@ columns.forEach(column => {
   });
 
   // Click event
-    column.addEventListener('click', function() {
-      // Remove active class from all columns and animate opacity
-      columns.forEach(col => {
-        col.classList.remove('active');
-        if (col !== this) {
-          animate(col, parseFloat(col.style.opacity || 0.4), 0.4, 500);
-        }
-            
-        // Determine which image class to use based on viewport width and column
-        let imageClass;
+  column.addEventListener('click', function() {
+    // Remove active class from all columns and animate opacity
+    columns.forEach(col => {
+      col.classList.remove('active');
+      if (col !== this) {
+        animate(col, parseFloat(col.style.opacity || 0.4), 0.4, 500);
+      }
+          
+      // Determine which image class to use based on viewport width and column
+      let imageClass;
 
-        if(viewportWidth < 768) {
-            // Use mobile image classes
-            imageClass = col.classList.contains('col-send') ? '.architecture-image.send.mobile' : 
-                        col.classList.contains('col-extend') ? '.architecture-image.extend.mobile' : 
-                        '.architecture-image.participate.mobile';
-        } else {
-            // Use desktop image classes
-            imageClass = col.classList.contains('col-send') ? '.architecture-image.send.desktop' : 
-                        col.classList.contains('col-extend') ? '.architecture-image.extend.desktop' : 
-                        '.architecture-image.participate.desktop';
-        }
+      if(viewportWidth < 768) {
+          // Use mobile image classes
+          imageClass = col.classList.contains('col-send') ? '.architecture-image.send.mobile' : 
+                      col.classList.contains('col-extend') ? '.architecture-image.extend.mobile' : 
+                      '.architecture-image.participate.mobile';
+      } else {
+          // Use desktop image classes
+          imageClass = col.classList.contains('col-send') ? '.architecture-image.send.desktop' : 
+                      col.classList.contains('col-extend') ? '.architecture-image.extend.desktop' : 
+                      '.architecture-image.participate.desktop';
+      }
 
-        // Now find and animate the image
-        const image = document.querySelector(imageClass);
-        if (image) {
-            animate(image, parseFloat(image.style.opacity || 0.0), 0.0, 500);
-        }
+      // Now find and animate the image
+      const image = document.querySelector(imageClass);
+      if (image) {
+          animate(image, parseFloat(image.style.opacity || 0.0), 0.0, 500);
+      }
 
-        // Find the loader in this column and reset its width
-        const loaderClass = col.classList.contains('col-send') ? '.loader-container-send' : 
-                          col.classList.contains('col-extend') ? '.loader-container-extend' : 
-                          '.loader-container-participate';
-            
-        const loader = document.querySelector(loaderClass);
-        if (loader) {
-          animateLoader(loader, 0, 500); // Reset loader width with animation
-        }
-
-        if(viewportWidth < 768) {
-          col.style.borderBottomWidth = '1px';
-          col.style.borderBottomStyle = 'solid';
-          col.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-          const bodytext = col.classList.contains('col-send') ? '.body-main.col-send' :
-                          col.classList.contains('col-extend') ? '.body-main.col-extend' : 
-                          '.body-main.col-participate';
-          const maintext = col.classList.contains('col-send') ? '.section-architecture-main-content-col-footer.col-send' :
-                          col.classList.contains('col-extend') ? '.section-architecture-main-content-col-footer.col-extend' : 
-                          '.section-architecture-main-content-col-footer.col-participate';
-
-          const maintextcontainer = document.querySelector(maintext);
-          const bodytextcontainer = document.querySelector(bodytext);
-
-          maintextcontainer.style.opacity = '0';
-          bodytextcontainer.style.opacity = '0';
-          maintextcontainer.style.display = 'flex';
-          bodytextcontainer.style.display = 'flex';
-        }
-      });
-
-      // Add active class to clicked column and animate opacity
-      this.classList.add('active');
-      animate(this, parseFloat(this.style.opacity || 0.4), 1.0, 500);
-
-      // Find the image in this column and set its opacity to 1
-        let imageClass;
-
-        if(viewportWidth < 768) {
-            // Use mobile image classes
-            imageClass = this.classList.contains('col-send') ? '.architecture-image.send.mobile' : 
-                        this.classList.contains('col-extend') ? '.architecture-image.extend.mobile' : 
-                        '.architecture-image.participate.mobile';
-        } else {
-            // Use desktop image classes
-            imageClass = this.classList.contains('col-send') ? '.architecture-image.send.desktop' : 
-                        this.classList.contains('col-extend') ? '.architecture-image.extend.desktop' : 
-                        '.architecture-image.participate.desktop';
-        }
-
-        // Now find and animate the image
-        const image = document.querySelector(imageClass);
-        if (image) {
-            animate(image, parseFloat(image.style.opacity || 0.0), 1, 500);
-        }
-        
-      // Find the loader in this column and set its width to 100%
-      const loaderClass = this.classList.contains('col-send') ? '.loader-container-send' : 
-                        this.classList.contains('col-extend') ? '.loader-container-extend' : 
-                        '.loader-container-participate';
+      // Find the loader in this column and reset its width
+      const loaderClass = col.classList.contains('col-send') ? '.loader-container-send' : 
+                         col.classList.contains('col-extend') ? '.loader-container-extend' : 
+                         '.loader-container-participate';
+          
       const loader = document.querySelector(loaderClass);
-      if (loader ) {
-        animateLoader(loader, 100, 500); // Animate to 100% width
+      if (loader) {
+        animateLoader(loader, 0, 500); // Reset loader width with animation
       }
 
       if(viewportWidth < 768) {
-        this.style.borderColor = '#D631B9';
-        const bodytext = this.classList.contains('col-send') ? '.body-main.col-send' :
-                        this.classList.contains('col-extend') ? '.body-main.col-extend' : 
+        col.style.borderBottomWidth = '1px';
+        col.style.borderBottomStyle = 'solid';
+        col.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+        const bodytext = col.classList.contains('col-send') ? '.body-main.col-send' :
+                        col.classList.contains('col-extend') ? '.body-main.col-extend' : 
                         '.body-main.col-participate';
-        const maintext = this.classList.contains('col-send') ? '.section-architecture-main-content-col-footer.col-send' :
-                        this.classList.contains('col-extend') ? '.section-architecture-main-content-col-footer.col-extend' : 
+        const maintext = col.classList.contains('col-send') ? '.section-architecture-main-content-col-footer.col-send' :
+                        col.classList.contains('col-extend') ? '.section-architecture-main-content-col-footer.col-extend' : 
                         '.section-architecture-main-content-col-footer.col-participate';
 
         const maintextcontainer = document.querySelector(maintext);
         const bodytextcontainer = document.querySelector(bodytext);
+
+        // Hide text for non-active columns
         maintextcontainer.style.opacity = '0';
         bodytextcontainer.style.opacity = '0';
         maintextcontainer.style.display = 'flex';
         bodytextcontainer.style.display = 'flex';
       }
     });
+
+    // Add active class to clicked column and animate opacity
+    this.classList.add('active');
+    animate(this, parseFloat(this.style.opacity || 0.4), 1.0, 500);
+
+    // Find the image in this column and set its opacity to 1
+      let imageClass;
+
+      if(viewportWidth < 768) {
+          // Use mobile image classes
+          imageClass = this.classList.contains('col-send') ? '.architecture-image.send.mobile' : 
+                      this.classList.contains('col-extend') ? '.architecture-image.extend.mobile' : 
+                      '.architecture-image.participate.mobile';
+      } else {
+          // Use desktop image classes
+          imageClass = this.classList.contains('col-send') ? '.architecture-image.send.desktop' : 
+                      this.classList.contains('col-extend') ? '.architecture-image.extend.desktop' : 
+                      '.architecture-image.participate.desktop';
+      }
+
+      // Now find and animate the image
+      const image = document.querySelector(imageClass);
+      if (image) {
+          animate(image, parseFloat(image.style.opacity || 0.0), 1, 500);
+      }
+      
+    // Find the loader in this column and set its width to 100%
+    const loaderClass = this.classList.contains('col-send') ? '.loader-container-send' : 
+                       this.classList.contains('col-extend') ? '.loader-container-extend' : 
+                       '.loader-container-participate';
+    const loader = document.querySelector(loaderClass);
+    if (loader ) {
+      animateLoader(loader, 100, 500); // Animate to 100% width
+    }
+
+    if(viewportWidth < 768) {
+      this.style.borderColor = '#D631B9';
+      const bodytext = this.classList.contains('col-send') ? '.body-main.col-send' :
+                      this.classList.contains('col-extend') ? '.body-main.col-extend' : 
+                      '.body-main.col-participate';
+      const maintext = this.classList.contains('col-send') ? '.section-architecture-main-content-col-footer.col-send' :
+                      this.classList.contains('col-extend') ? '.section-architecture-main-content-col-footer.col-extend' : 
+                      '.section-architecture-main-content-col-footer.col-participate';
+
+      const maintextcontainer = document.querySelector(maintext);
+      const bodytextcontainer = document.querySelector(bodytext);
+      
+      // Show text for the active/clicked column
+      maintextcontainer.style.opacity = '1';
+      bodytextcontainer.style.opacity = '1';
+      maintextcontainer.style.display = 'flex';
+      bodytextcontainer.style.display = 'flex';
+    }
   });
+});
     });
   
     document.addEventListener('DOMContentLoaded', function () {
