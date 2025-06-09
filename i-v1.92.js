@@ -10,7 +10,7 @@
     }else{
       viewportHeight = window.innerHeight > 900 ? 900 : window.innerHeight;
     }
-    debugger;
+    
     // Declare variables once at the top scope
     let starSystems = [];
     let validCombinations = [];
@@ -1289,7 +1289,7 @@
       }
     
       // Function to update UI based on current section
-      function updateUI(section) {
+      function updateUI(section,isHover) {
         // Reset all sections and case studies
         section1.style.opacity = '100%';
         section2.style.opacity = '40%';
@@ -1297,8 +1297,8 @@
         
         // Update loaders based on current section
         if (section === 1) {
-          loader1.style.width = '100%';
-          loader1.style.opacity = '1';
+          loader1.style.width = isHover ? '0%' : '100%';
+          loader1.style.opacity = isHover ? '1' : '0';
           loader2.style.width = '0%';
           loader3.style.width = '0%';
           section1.style.opacity = '100%';
@@ -1312,9 +1312,9 @@
           }
         } 
         else if (section === 2) {
-          loader1.style.width = '100%';
+          loader1.style.width =  isHover ? '00%' : '100%';
           loader1.style.opacity = '0';
-          loader2.style.width = '100%';
+          loader2.style.width =  isHover ? '00%' : '100%';
           loader2.style.opacity = '1';
           loader3.style.width = '0%';
           section1.style.opacity = '40%';
@@ -1329,11 +1329,11 @@
           
         } 
         else if (section === 3) {
-          loader1.style.width = '100%';
+          loader1.style.width =  isHover ? '0%' : '100%';
           loader1.style.opacity = '0';
-          loader2.style.width = '100%';
+          loader2.style.width =  isHover ? '0%' : '100%';
           loader2.style.opacity = '0';
-          loader3.style.width = '100%';
+          loader3.style.width =  isHover ? '0%' : '100%';
           loader3.style.opacity = '1';
           section1.style.opacity = '40%';
           section2.style.opacity = '40%';
@@ -1439,21 +1439,21 @@
       }
 
       // Handle section hover
-      function handleSectionClicked(sectionNum) {
+      function handleSectionClicked(sectionNum,isHover) {
         pauseAnimation();
-        updateUI(sectionNum);
-        showCaseStudy(sectionNum);
+        updateUI(sectionNum,isHover);
+        showCaseStudy(sectionNum, isHover);
       }
     
       // Set up hover events
-      section1.addEventListener('mouseenter', () => handleSectionHover(1));
-      section2.addEventListener('mouseenter', () => handleSectionHover(2));
-      section3.addEventListener('mouseenter', () => handleSectionHover(3));
+      section1.addEventListener('mouseenter', () => handleSectionHover(1,true));
+      section2.addEventListener('mouseenter', () => handleSectionHover(2,true));
+      section3.addEventListener('mouseenter', () => handleSectionHover(3,true));
 
       // Set up click events
-      section1.addEventListener('click', () => handleSectionClicked(1));
-      section2.addEventListener('click', () => handleSectionClicked(2));
-      section3.addEventListener('click', () => handleSectionClicked(3));
+      section1.addEventListener('click', () => handleSectionClicked(1, false));
+      section2.addEventListener('click', () => handleSectionClicked(2, false));
+      section3.addEventListener('click', () => handleSectionClicked(3, false));
       
       // Set up mouseleave event to resume animation
       const sections = [section1, section2, section3];
