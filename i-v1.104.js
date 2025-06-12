@@ -308,7 +308,7 @@
         destTopLeftBorder.setAttribute("y", destCenter.y - 22);
 
         const destTopRightBorder = document.createElementNS("http://www.w3.org/2000/svg", "image");
-        destTopRightBorder.setAttribute("href", "https://cdn.prod.website-files.com/67f6e5eb787625b1298796e7/67febbfb1d230362ec217161_topRightBorder.svg");
+        destTopRightBorder.setAttribute("href", "https://cdn.prod.website-files.com/67f6e5eb787625b1298796e7/67febbfc1d230362ec217161_topRightBorder.svg");
         destTopRightBorder.setAttribute("width", "14");
         destTopRightBorder.setAttribute("height", "15");
         destTopRightBorder.setAttribute("x", destCenter.x + 8.5);
