@@ -951,6 +951,111 @@
     function init() {
       createStarSystems();
       createNavigationPaths();
+
+      // Configure display sequences FIRST
+      let textSequences;
+      if(screenWidth < 800) {
+        textSequences = [
+          { source: 'node4', target: 'node1' , payload: 'RENZO', title:'Asset Issuance'}, // SOLANA - BASE
+          { source: 'node2', target: 'node3' , payload: 'VELODROME', title:'Velodrome'}, // POLYGON - ETHEREUM
+          { source: 'node4', target: 'node1' , payload: 'AAVE', title:'Aave'}, // BNB CHAIN - ARBITRUM
+          { source: 'node2', target: 'node3' , payload: 'RENZO', title:'Renzo'}, // SOLANA - BASE
+          { source: 'node4', target: 'node1' , payload: 'VELODROME', title:'Apps'}, // POLYGON - ETHEREUM
+          { source: 'node2', target: 'node3' , payload: 'AAVE', title:'Governance'}, // BNB CHAIN - ARBITRUM
+        ];
+      } else {
+        textSequences = [
+          { source: 'node6', target: 'node2' , payload: 'RENZO', title:'Asset Issuance'}, // SOLANA - BASE
+          { source: 'node4', target: 'node3' , payload: 'VELODROME', title:'Velodrome'}, // POLYGON - ETHEREUM
+          { source: 'node9', target: 'node5' , payload: 'AAVE', title:'Aave'}, // BNB CHAIN - ARBITRUM
+          { source: 'node6', target: 'node2' , payload: 'RENZO', title:'Renzo'}, // SOLANA - BASE
+          { source: 'node4', target: 'node3' , payload: 'VELODROME', title:'Apps'}, // POLYGON - ETHEREUM
+          { source: 'node9', target: 'node5' , payload: 'AAVE', title:'Governance'}, // BNB CHAIN - ARBITRUM
+        ];
+      }
+
+      // Continuous text rotation cycle
+      async function runTextRotation() {
+        if (!textSequences || textSequences.length === 0) {
+          console.error('No text sequences configured');
+          return;
+        }
+
+        let sequencePointer = 0;
+        
+        while (true) {
+          // Get current text sequence
+          const currentSequence = textSequences[sequencePointer];
+          
+          // Animate text display
+          await animateTypingEffect(currentSequence.title);
+          
+          // Advance to next sequence
+          sequencePointer++;
+          
+          // Loop back to beginning when reaching end
+          if (sequencePointer >= textSequences.length) {
+            sequencePointer = 0;
+          }
+          
+          // Delay between text changes
+          await new Promise(resolve => setTimeout(resolve, 2000));
+        }
+      }
+
+      // Initialize text rotation
+      runTextRotation();
+    }
+
+    // Enhanced typing animation with cursor indicator
+    async function animateTypingEffect(textContent) {
+      if (!textContent || typeof textContent !== 'string') {
+        console.warn('animateTypingEffect: Invalid text content provided');
+        return;
+      }
+
+      const targetElement = document.querySelector(".data-package-hero-text");
+      if (!targetElement) {
+        console.warn('animateTypingEffect: Target element not found');
+        return;
+      }
+
+      // Reset element content
+      targetElement.textContent = "";
+      
+      const minimumDuration = 1500;
+      const maximumDuration = 2500;
+      const fastestSpeed = 30;
+      const slowestSpeed = 120;
+      
+      const calculatedSpeed = Math.min(maximumDuration / textContent.length, slowestSpeed);
+      const finalSpeed = Math.max(calculatedSpeed, fastestSpeed);
+      
+      let buildingText = "";
+      
+      try {
+        // Character-by-character animation with cursor
+        for (let charIndex = 0; charIndex < textContent.length; charIndex++) {
+          buildingText += textContent.charAt(charIndex);
+          targetElement.textContent = buildingText + '|'; // Show cursor
+          
+          const speedVariation = finalSpeed * 0.2;
+          const randomizedDelay = finalSpeed + (Math.random() - 0.5) * speedVariation;
+          const actualDelay = Math.max(randomizedDelay, fastestSpeed);
+          
+          await new Promise(resolve => setTimeout(resolve, actualDelay));
+        }
+        
+        // Display final text without cursor
+        targetElement.textContent = buildingText;
+        
+        // Brief pause to show completed text
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+      } catch (error) {
+        console.error('animateTypingEffect: Animation error occurred:', error);
+        targetElement.textContent = textContent;
+      }
       
       // Set up color gradient for destination ring
       const destRingGradient = document.getElementById("dest-ring-gradient");
