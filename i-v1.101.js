@@ -22,7 +22,7 @@
         { id: 'star2', x: viewportWidth * .24, y: viewportHeight * .405, name: 'OPTIMISM' },
         { id: 'star3', x: viewportWidth * .65, y: viewportHeight * .2, name: 'UNICHAIN' },
         { id: 'star4', x: viewportWidth * .6, y: viewportHeight * .35, name: 'SOLANA' },
-        { id: 'star5', x: viewportWidth * .4, y: viewportHeight * .3 , name: 'ETHEREUM' }
+        { id: 'star5', x: viewportWidth * .425, y: viewportHeight * .275 , name: 'ETHEREUM' }
       ];
     } else {
       starSystems = [
