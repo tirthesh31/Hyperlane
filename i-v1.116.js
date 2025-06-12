@@ -1005,7 +1005,7 @@
 
       // Initialize text rotation
       runTextRotation();
-    }
+    
 
     // Enhanced typing animation with cursor indicator
     async function animateTypingEffect(textContent) {
@@ -1056,7 +1056,7 @@
         console.error('animateTypingEffect: Animation error occurred:', error);
         targetElement.textContent = textContent;
       }
-      
+    } 
       // Set up color gradient for destination ring
       const destRingGradient = document.getElementById("dest-ring-gradient");
       destRingGradient.setAttribute("x1", destCenter.x + 16);
