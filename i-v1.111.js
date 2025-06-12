@@ -460,113 +460,7 @@
 
     }
 
-    var iteration = 0;
-    async function updateText(newPackage) {
-  // Validate input
-  if (!newPackage || typeof newPackage !== 'string') {
-    console.warn('updateText: Invalid input provided');
-    return;
-  }
-
-  const element = document.querySelector(".data-package-hero-text");
-  if (!element) {
-    console.warn('updateText: Element with class "data-package-hero-text" not found');
-    return;
-  }
-
-  // Clear existing content
-  element.textContent = "";
-  
-  // Configuration for typing effect
-  const minDuration = 2000; // 2 seconds minimum
-  const maxDuration = 3000; // 3 seconds maximum
-  const minTypeSpeed = 20;  // Minimum delay between characters (ms)
-  const maxTypeSpeed = 150; // Maximum delay between characters (ms)
-  
-  // Calculate optimal typing speed based on text length
-  const baseTypeSpeed = Math.min(maxDuration / newPackage.length, maxTypeSpeed);
-  const typeSpeed = Math.max(baseTypeSpeed, minTypeSpeed);
-  
-  let displayText = "";
-  
-  try {
-    // Type each character with gentle timing
-    for (let i = 0; i < newPackage.length; i++) {
-      displayText += newPackage.charAt(i);
-      element.textContent = displayText;
-      
-      // Add slight randomness for more natural typing feel
-      const variance = typeSpeed * 0.3; // 30% variance
-      const randomDelay = typeSpeed + (Math.random() - 0.5) * variance;
-      const finalDelay = Math.max(randomDelay, minTypeSpeed);
-      
-      await new Promise(resolve => setTimeout(resolve, finalDelay));
-    }
-  } catch (error) {
-    console.error('updateText: Error during typing animation:', error);
-    // Fallback: show complete text immediately
-    element.textContent = newPackage;
-  }
-}
-
-  // Optional: Enhanced version with cursor effect
-  async function updateTextWithCursor(newPackage) {
-    if (!newPackage || typeof newPackage !== 'string') {
-      console.warn('updateTextWithCursor: Invalid input provided');
-      return;
-    }
-
-    const element = document.querySelector(".data-package-hero-text");
-    if (!element) {
-      console.warn('updateTextWithCursor: Element not found');
-      return;
-    }
-
-    // Clear and add cursor
-    element.textContent = "";
     
-    const minDuration = 2000;
-    const maxDuration = 3000;
-    const minTypeSpeed = 20;
-    const maxTypeSpeed = 150;
-    
-    const baseTypeSpeed = Math.min(maxDuration / newPackage.length, maxTypeSpeed);
-    const typeSpeed = Math.max(baseTypeSpeed, minTypeSpeed);
-    
-    let displayText = "";
-    
-    try {
-      // Typing animation with cursor
-      for (let i = 0; i < newPackage.length; i++) {
-        displayText += newPackage.charAt(i);
-        element.textContent = displayText + '|'; // Add cursor
-        
-        const variance = typeSpeed * 0.3;
-        const randomDelay = typeSpeed + (Math.random() - 0.5) * variance;
-        const finalDelay = Math.max(randomDelay, minTypeSpeed);
-        
-        await new Promise(resolve => setTimeout(resolve, finalDelay));
-      }
-      
-      // Remove cursor and show final text
-      element.textContent = displayText;
-      
-      // Optional: Add blinking cursor for a moment
-      let blinkCount = 0;
-      const blinkInterval = setInterval(() => {
-        element.textContent = blinkCount % 2 === 0 ? displayText + '|' : displayText;
-        blinkCount++;
-        if (blinkCount >= 6) { // Blink 3 times
-          clearInterval(blinkInterval);
-          element.textContent = displayText;
-        }
-      }, 300);
-      
-    } catch (error) {
-      console.error('updateTextWithCursor: Error during animation:', error);
-      element.textContent = newPackage;
-    }
-  }
     
     // Create navigation paths between stars
     function createNavigationPaths() {
@@ -1056,36 +950,115 @@
     }
     
     // Initialize everything
-    function init() {
-      createStarSystems();
-      createNavigationPaths();
+function init() {
+  createStarSystems();
+  createNavigationPaths();
 
-      // Simple infinite loop for text updates
-      async function startTextLoop() {
-        let currentCombinationIndex = 0;
-        
-        while (true) {
-          // Get current combination
-          const combination = validCombinations[currentCombinationIndex];
-          
-          // Update text
-          await updateTextWithCursor(combination.headline);
-          
-          // Move to next combination
-          currentCombinationIndex++;
-          
-          // Reset to first combination when we reach the end
-          if (currentCombinationIndex >= validCombinations.length) {
-            currentCombinationIndex = 0;
-          }
-          
-          // Small pause between updates (optional)
-          await new Promise(resolve => setTimeout(resolve, 1000));
-        }
+  // Define validCombinations FIRST
+  let validCombinationsText;
+  if(viewportWidth < 800) {
+    validCombinationsText = [
+      { org: 'star4', dest: 'star1' , dataPackage: 'RENZO', headline:'Asset Issuance'}, // SOLANA - BASE
+      { org: 'star2', dest: 'star3' , dataPackage: 'VELODROME', headline:'Velodrome'}, // POLYGON - ETHEREUM
+      { org: 'star4', dest: 'star1' , dataPackage: 'AAVE', headline:'Aave'}, // BNB CHAIN - ARBITRUM
+      { org: 'star2', dest: 'star3' , dataPackage: 'RENZO', headline:'Renzo'}, // SOLANA - BASE
+      { org: 'star4', dest: 'star1' , dataPackage: 'VELODROME', headline:'Apps'}, // POLYGON - ETHEREUM
+      { org: 'star2', dest: 'star3' , dataPackage: 'AAVE', headline:'Governance'}, // BNB CHAIN - ARBITRUM
+    ];
+  } else {
+    validCombinationsText = [
+      { org: 'star6', dest: 'star2' , dataPackage: 'RENZO', headline:'Asset Issuance'}, // SOLANA - BASE
+      { org: 'star4', dest: 'star3' , dataPackage: 'VELODROME', headline:'Velodrome'}, // POLYGON - ETHEREUM
+      { org: 'star9', dest: 'star5' , dataPackage: 'AAVE', headline:'Aave'}, // BNB CHAIN - ARBITRUM
+      { org: 'star6', dest: 'star2' , dataPackage: 'RENZO', headline:'Renzo'}, // SOLANA - BASE
+      { org: 'star4', dest: 'star3' , dataPackage: 'VELODROME', headline:'Apps'}, // POLYGON - ETHEREUM
+      { org: 'star9', dest: 'star5' , dataPackage: 'AAVE', headline:'Governance'}, // BNB CHAIN - ARBITRUM
+    ];
+  }
+
+  // Simple infinite loop for text updates
+  async function startTextLoop() {
+    if (!validCombinationsText || validCombinationsText.length === 0) {
+      console.error('No valid combinations found');
+      return;
+    }
+
+    let currentCombinationIndex = 0;
+    
+    while (true) {
+      // Get current combination
+      const combination = validCombinationsText[currentCombinationIndex];
+      
+      // Update text
+      await updateTextWithCursor(combination.headline);
+      
+      // Move to next combination
+      currentCombinationIndex++;
+      
+      // Reset to first combination when we reach the end
+      if (currentCombinationIndex >= validCombinationsText.length) {
+        currentCombinationIndex = 0;
       }
+      
+      // Pause between updates - increased for better readability
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+  }
 
-      // Start the loop
-      startTextLoop();
+  // Start the loop
+  startTextLoop();
+}
+
+// Enhanced updateTextWithCursor function with better error handling
+async function updateTextWithCursor(newPackage) {
+  if (!newPackage || typeof newPackage !== 'string') {
+    console.warn('updateTextWithCursor: Invalid input provided');
+    return;
+  }
+
+  const element = document.querySelector(".data-package-hero-text");
+  if (!element) {
+    console.warn('updateTextWithCursor: Element not found');
+    return;
+  }
+
+  // Clear and add cursor
+  element.textContent = "";
+  
+  const minDuration = 1500;  // Reduced for faster typing
+  const maxDuration = 2500;  // Reduced for faster typing
+  const minTypeSpeed = 30;
+  const maxTypeSpeed = 120;
+  
+  const baseTypeSpeed = Math.min(maxDuration / newPackage.length, maxTypeSpeed);
+  const typeSpeed = Math.max(baseTypeSpeed, minTypeSpeed);
+  
+  let displayText = "";
+  
+  try {
+    // Typing animation with cursor
+    for (let i = 0; i < newPackage.length; i++) {
+      displayText += newPackage.charAt(i);
+      element.textContent = displayText + '|'; // Add cursor
+      
+      const variance = typeSpeed * 0.2; // Reduced variance for smoother typing
+      const randomDelay = typeSpeed + (Math.random() - 0.5) * variance;
+      const finalDelay = Math.max(randomDelay, minTypeSpeed);
+      
+      await new Promise(resolve => setTimeout(resolve, finalDelay));
+    }
+    
+    // Show final text without cursor briefly
+    element.textContent = displayText;
+    
+    // Brief pause to show completed text
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+  } catch (error) {
+    console.error('updateTextWithCursor: Error during animation:', error);
+    element.textContent = newPackage;
+  }
+
       
       // Set up color gradient for destination ring
       const destRingGradient = document.getElementById("dest-ring-gradient");
