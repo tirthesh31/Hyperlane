@@ -308,7 +308,7 @@
         destTopLeftBorder.setAttribute("y", destCenter.y - 22);
 
         const destTopRightBorder = document.createElementNS("http://www.w3.org/2000/svg", "image");
-        destTopRightBorder.setAttribute("href", "https://cdn.prod.website-files.com/67f6e5eb787625b1298796e7/67febbfc1d230362ec217161_topRightBorder.svg");
+        destTopRightBorder.setAttribute("href", "https://cdn.prod.website-files.com/67f6e5eb787625b1298796e7/67febbfb1d230362ec217161_topRightBorder.svg");
         destTopRightBorder.setAttribute("width", "14");
         destTopRightBorder.setAttribute("height", "15");
         destTopRightBorder.setAttribute("x", destCenter.x + 8.5);
@@ -460,32 +460,27 @@
 
     }
 
-    var iteration = 0;
+    // Remove iteration variable and refactor updateText
     async function updateText(newPackage) {
-      if (currentCombinationIndex !== 0 && iteration != 0) {
-        const element = document.querySelector(".data-package-hero-text");
+      const element = document.querySelector(".data-package-hero-text");
+      if (!element) return;
+      element.textContent = "";
+      let displayText = "";
+      // Calculate typeSpeed for 2-3s total duration
+      const minDuration = 2000, maxDuration = 3000;
+      const typeSpeed = Math.max(
+        minDuration / newPackage.length,
+        Math.min(maxDuration / newPackage.length, 100)
+      );
+      for (let i = 0; i < newPackage.length; i++) {
+        // Add character to our temporary string
+        displayText += newPackage.charAt(i);
         
-        // Clear the current text
-        element.textContent = "";
+        // Update the DOM element once per iteration
+        element.textContent = displayText;
         
-        // Create a temporary string to build up the text
-        let displayText = "";
-        const typeSpeed = 50; // milliseconds per character
-        
-        for (let i = 0; i < newPackage.length; i++) {
-          // Add character to our temporary string
-          displayText += newPackage.charAt(i);
-          
-          // Update the DOM element once per iteration
-          element.textContent = displayText;
-          
-          // Wait before adding the next character
-          await new Promise(resolve => setTimeout(resolve, typeSpeed));
-        }
-      } else {
-        // First time setup
-        iteration++;
-        document.querySelector(".data-package-hero-text").textContent = newPackage;
+        // Wait before adding the next character
+        await new Promise(resolve => setTimeout(resolve, typeSpeed));
       }
     }
     
@@ -986,7 +981,6 @@
     function init() {
       createStarSystems();
       createNavigationPaths();
-      
       // Set up color gradient for destination ring
       const destRingGradient = document.getElementById("dest-ring-gradient");
       destRingGradient.setAttribute("x1", destCenter.x + 16);
@@ -1011,6 +1005,9 @@
       .call(() => {
         animateCycle();
       }, null, "+=0.2");
+      
+      // Animate text on first load
+      updateText(validCombinations[currentCombinationIndex].headline);
     }
     
     // Start when page loads
@@ -1513,4 +1510,3 @@ columns.forEach(column => {
         //startAnimation();
       }
     });
-  
