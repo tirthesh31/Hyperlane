@@ -462,22 +462,111 @@
 
     var iteration = 0;
     async function updateText(newPackage) {
-      const element = document.querySelector(".data-package-hero-text");
-      if (!element) return;
-      element.textContent = "";
-      let displayText = "";
-      // Calculate typeSpeed for 2-3s total duration
-      const minDuration = 2000, maxDuration = 3000;
-      const typeSpeed = Math.max(
-        minDuration / newPackage.length,
-        Math.min(maxDuration / newPackage.length, 100)
-      );
+  // Validate input
+  if (!newPackage || typeof newPackage !== 'string') {
+    console.warn('updateText: Invalid input provided');
+    return;
+  }
+
+  const element = document.querySelector(".data-package-hero-text");
+  if (!element) {
+    console.warn('updateText: Element with class "data-package-hero-text" not found');
+    return;
+  }
+
+  // Clear existing content
+  element.textContent = "";
+  
+  // Configuration for typing effect
+  const minDuration = 2000; // 2 seconds minimum
+  const maxDuration = 3000; // 3 seconds maximum
+  const minTypeSpeed = 20;  // Minimum delay between characters (ms)
+  const maxTypeSpeed = 150; // Maximum delay between characters (ms)
+  
+  // Calculate optimal typing speed based on text length
+  const baseTypeSpeed = Math.min(maxDuration / newPackage.length, maxTypeSpeed);
+  const typeSpeed = Math.max(baseTypeSpeed, minTypeSpeed);
+  
+  let displayText = "";
+  
+  try {
+    // Type each character with gentle timing
+    for (let i = 0; i < newPackage.length; i++) {
+      displayText += newPackage.charAt(i);
+      element.textContent = displayText;
+      
+      // Add slight randomness for more natural typing feel
+      const variance = typeSpeed * 0.3; // 30% variance
+      const randomDelay = typeSpeed + (Math.random() - 0.5) * variance;
+      const finalDelay = Math.max(randomDelay, minTypeSpeed);
+      
+      await new Promise(resolve => setTimeout(resolve, finalDelay));
+    }
+  } catch (error) {
+    console.error('updateText: Error during typing animation:', error);
+    // Fallback: show complete text immediately
+    element.textContent = newPackage;
+  }
+}
+
+  // Optional: Enhanced version with cursor effect
+  async function updateTextWithCursor(newPackage) {
+    if (!newPackage || typeof newPackage !== 'string') {
+      console.warn('updateTextWithCursor: Invalid input provided');
+      return;
+    }
+
+    const element = document.querySelector(".data-package-hero-text");
+    if (!element) {
+      console.warn('updateTextWithCursor: Element not found');
+      return;
+    }
+
+    // Clear and add cursor
+    element.textContent = "";
+    
+    const minDuration = 2000;
+    const maxDuration = 3000;
+    const minTypeSpeed = 20;
+    const maxTypeSpeed = 150;
+    
+    const baseTypeSpeed = Math.min(maxDuration / newPackage.length, maxTypeSpeed);
+    const typeSpeed = Math.max(baseTypeSpeed, minTypeSpeed);
+    
+    let displayText = "";
+    
+    try {
+      // Typing animation with cursor
       for (let i = 0; i < newPackage.length; i++) {
         displayText += newPackage.charAt(i);
-        element.textContent = displayText;
-        await new Promise(resolve => setTimeout(resolve, typeSpeed));
+        element.textContent = displayText + '|'; // Add cursor
+        
+        const variance = typeSpeed * 0.3;
+        const randomDelay = typeSpeed + (Math.random() - 0.5) * variance;
+        const finalDelay = Math.max(randomDelay, minTypeSpeed);
+        
+        await new Promise(resolve => setTimeout(resolve, finalDelay));
       }
+      
+      // Remove cursor and show final text
+      element.textContent = displayText;
+      
+      // Optional: Add blinking cursor for a moment
+      let blinkCount = 0;
+      const blinkInterval = setInterval(() => {
+        element.textContent = blinkCount % 2 === 0 ? displayText + '|' : displayText;
+        blinkCount++;
+        if (blinkCount >= 6) { // Blink 3 times
+          clearInterval(blinkInterval);
+          element.textContent = displayText;
+        }
+      }, 300);
+      
+    } catch (error) {
+      console.error('updateTextWithCursor: Error during animation:', error);
+      element.textContent = newPackage;
     }
+  }
     
     // Create navigation paths between stars
     function createNavigationPaths() {
@@ -971,18 +1060,32 @@
       createStarSystems();
       createNavigationPaths();
 
-      //start updateText
-      validCombinations.forEach((combination, index) => {
-        // Update text for each combination
-        updateText(combination.headline).then(() => {
-          // After updating text, set the current combination index
-          currentCombinationIndex = index;
-          // If this is the last combination, reset to the first one
-          if (index === validCombinations.length - 1) {
+      // Simple infinite loop for text updates
+      async function startTextLoop() {
+        let currentCombinationIndex = 0;
+        
+        while (true) {
+          // Get current combination
+          const combination = validCombinations[currentCombinationIndex];
+          
+          // Update text
+          await updateTextWithCursor(combination.headline);
+          
+          // Move to next combination
+          currentCombinationIndex++;
+          
+          // Reset to first combination when we reach the end
+          if (currentCombinationIndex >= validCombinations.length) {
             currentCombinationIndex = 0;
           }
-        });
-      });
+          
+          // Small pause between updates (optional)
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+      }
+
+      // Start the loop
+      startTextLoop();
       
       // Set up color gradient for destination ring
       const destRingGradient = document.getElementById("dest-ring-gradient");
