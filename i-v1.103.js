@@ -308,7 +308,7 @@
         destTopLeftBorder.setAttribute("y", destCenter.y - 22);
 
         const destTopRightBorder = document.createElementNS("http://www.w3.org/2000/svg", "image");
-        destTopRightBorder.setAttribute("href", "https://cdn.prod.website-files.com/67f6e5eb787625b1298796e7/67febbfc1d230362ec217161_topRightBorder.svg");
+        destTopRightBorder.setAttribute("href", "https://cdn.prod.website-files.com/67f6e5eb787625b1298796e7/67febbfb1d230362ec217161_topRightBorder.svg");
         destTopRightBorder.setAttribute("width", "14");
         destTopRightBorder.setAttribute("height", "15");
         destTopRightBorder.setAttribute("x", destCenter.x + 8.5);
@@ -552,65 +552,7 @@
       navLine.setAttribute("stroke-linecap", "round");
       navLine.setAttribute("opacity", "1");
       
-      // Add data package images along the navLine
-      // Remove previous data packages if they exist
-      const existingPackages = document.querySelectorAll(".data-package");
-      existingPackages.forEach(pkg => pkg.remove());
       
-      // Create container for data packages if it doesn't exist
-      let dataPackageContainer = document.querySelector(".data-packages");
-      if (!dataPackageContainer) {
-        dataPackageContainer = document.createElementNS("http://www.w3.org/2000/svg", "g");
-        dataPackageContainer.setAttribute("class", "data-packages");
-        document.querySelector("svg").appendChild(dataPackageContainer);
-      } else {
-        dataPackageContainer.innerHTML = '';
-      }
-      
-      // Create 3 data packages placed at different positions along the main path
-      const dataPackagePositions = [0.25, 0.5, 0.75]; // Positions along the path (0 to 1)
-      
-      // Create only 2 data packages (removed the first one)
-      dataPackagePositions.slice(1, 3).forEach((_, index) => {
-        debugger;
-        const dataPackageText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        dataPackageText.setAttribute("class", "data-package-text");
-        dataPackageText.setAttribute("text-anchor", "middle");
-        dataPackageText.setAttribute("x", 15); // Center relative to the group
-        dataPackageText.setAttribute("y", 0); // Position above the group (adjust as needed)
-        dataPackageText.setAttribute("fill", "white");
-        dataPackageText.setAttribute("font-family", "Raleway, sans-serif");
-        dataPackageText.setAttribute("font-size", "6px");
-        dataPackageText.setAttribute("font-weight", "500");
-        dataPackageText.setAttribute("filter", "url(#text-glow-filter)");
-        dataPackageText.textContent = validCombinations[currentCombinationIndex].dataPackage;
-        
-        
-        
-        // Call the function
-        updateText(validCombinations[currentCombinationIndex].headline);
-        
-        
-        // Create the data package image for main path
-        const dataPackage = document.createElementNS("http://www.w3.org/2000/svg", "image");
-        dataPackage.setAttribute("class", `data-package `);
-        dataPackage.setAttribute("href", "https://cdn.prod.website-files.com/67f6e5eb787625b1298796e7/67f7e6deb5e2dad989aac0d6_f98e3818f5e1690f8735eeb94cff1243_Data%20Package.svg");
-        dataPackage.setAttribute("width", "27");
-        dataPackage.setAttribute("height", "27");
-
-        const dataPackageWrapper = document.createElementNS("http://www.w3.org/2000/svg", "g");
-        dataPackageWrapper.setAttribute("class", `data-package-wrapper main-data-package-${index}`);
-        dataPackageWrapper.setAttribute("opacity", `0`);
-        dataPackageWrapper.setAttribute("display", `flex`);
-        dataPackageWrapper.setAttribute("align-items", `center`);
-        dataPackageWrapper.setAttribute("justify-content", `center`);
-        dataPackageWrapper.setAttribute("direction", `column`);
-        
-        // Add to container
-        dataPackageWrapper.appendChild(dataPackageText);
-        dataPackageWrapper.appendChild(dataPackage);
-        dataPackageContainer.appendChild(dataPackageWrapper);
-      });
       
       // Update the gradient for the line
       const navGradient = document.getElementById("navGradient");
@@ -1513,5 +1455,4 @@ columns.forEach(column => {
         //startAnimation();
       }
     });
-  
-    
+
