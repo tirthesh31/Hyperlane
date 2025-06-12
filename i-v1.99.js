@@ -21,8 +21,8 @@
         { id: 'star1', x: viewportWidth * .185, y: viewportHeight * .19, name: 'ECLIPSE' },
         { id: 'star2', x: viewportWidth * .24, y: viewportHeight * .405, name: 'OPTIMISM' },
         { id: 'star3', x: viewportWidth * .65, y: viewportHeight * .2, name: 'UNICHAIN' },
-        { id: 'star4', x: viewportWidth * .65, y: viewportHeight * .415, name: 'SOLANA' },
-        { id: 'star5', x: viewportWidth * .488, y: viewportHeight * .32 , name: 'ETHEREUM' }
+        { id: 'star4', x: viewportWidth * .55, y: viewportHeight * .35, name: 'SOLANA' },
+        { id: 'star5', x: viewportWidth * .4, y: viewportHeight * .25 , name: 'ETHEREUM' }
       ];
     } else {
       starSystems = [
