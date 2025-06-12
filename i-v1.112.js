@@ -460,8 +460,6 @@
 
     }
 
-    
-    
     // Create navigation paths between stars
     function createNavigationPaths() {
       // Get origin and destination positions
@@ -950,6 +948,7 @@
     }
     
     // Initialize everything
+    // Initialize everything
 function init() {
   createStarSystems();
   createNavigationPaths();
@@ -996,7 +995,7 @@ function init() {
       currentCombinationIndex++;
       
       // Reset to first combination when we reach the end
-      if (currentCombinationIndex >= validCombinationsText.length) {
+      if (currentCombinationIndex >= validCombinations.length) {
         currentCombinationIndex = 0;
       }
       
@@ -1586,3 +1585,4 @@ columns.forEach(column => {
         //startAnimation();
       }
     });
+  
