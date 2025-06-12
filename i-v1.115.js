@@ -954,7 +954,7 @@
 
       // Configure display sequences FIRST
       let textSequences;
-      if(screenWidth < 800) {
+      if(viewportWidth < 800) {
         textSequences = [
           { source: 'node4', target: 'node1' , payload: 'RENZO', title:'Asset Issuance'}, // SOLANA - BASE
           { source: 'node2', target: 'node3' , payload: 'VELODROME', title:'Velodrome'}, // POLYGON - ETHEREUM
