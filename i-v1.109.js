@@ -308,7 +308,7 @@
         destTopLeftBorder.setAttribute("y", destCenter.y - 22);
 
         const destTopRightBorder = document.createElementNS("http://www.w3.org/2000/svg", "image");
-        destTopRightBorder.setAttribute("href", "https://cdn.prod.website-files.com/67f6e5eb787625b1298796e7/67febbfb1d230362ec217161_topRightBorder.svg");
+        destTopRightBorder.setAttribute("href", "https://cdn.prod.website-files.com/67f6e5eb787625b1298796e7/67febbfc1d230362ec217161_topRightBorder.svg");
         destTopRightBorder.setAttribute("width", "14");
         destTopRightBorder.setAttribute("height", "15");
         destTopRightBorder.setAttribute("x", destCenter.x + 8.5);
@@ -460,7 +460,7 @@
 
     }
 
-    // Remove iteration variable and refactor updateText
+    var iteration = 0;
     async function updateText(newPackage) {
       const element = document.querySelector(".data-package-hero-text");
       if (!element) return;
@@ -473,13 +473,8 @@
         Math.min(maxDuration / newPackage.length, 100)
       );
       for (let i = 0; i < newPackage.length; i++) {
-        // Add character to our temporary string
         displayText += newPackage.charAt(i);
-        
-        // Update the DOM element once per iteration
         element.textContent = displayText;
-        
-        // Wait before adding the next character
         await new Promise(resolve => setTimeout(resolve, typeSpeed));
       }
     }
@@ -579,12 +574,6 @@
         dataPackageText.setAttribute("font-weight", "500");
         dataPackageText.setAttribute("filter", "url(#text-glow-filter)");
         dataPackageText.textContent = validCombinations[currentCombinationIndex].dataPackage;
-        
-        
-        
-        // Call the function
-        updateText(validCombinations[currentCombinationIndex].headline);
-        
         
         // Create the data package image for main path
         const dataPackage = document.createElementNS("http://www.w3.org/2000/svg", "image");
@@ -981,6 +970,20 @@
     function init() {
       createStarSystems();
       createNavigationPaths();
+
+      //start updateText
+      validCombinations.forEach((combination, index) => {
+        // Update text for each combination
+        updateText(combination.headline).then(() => {
+          // After updating text, set the current combination index
+          currentCombinationIndex = index;
+          // If this is the last combination, reset to the first one
+          if (index === validCombinations.length - 1) {
+            currentCombinationIndex = 0;
+          }
+        });
+      });
+      
       // Set up color gradient for destination ring
       const destRingGradient = document.getElementById("dest-ring-gradient");
       destRingGradient.setAttribute("x1", destCenter.x + 16);
@@ -1005,9 +1008,6 @@
       .call(() => {
         animateCycle();
       }, null, "+=0.2");
-      
-      // Animate text on first load
-      updateText(validCombinations[currentCombinationIndex].headline);
     }
     
     // Start when page loads
