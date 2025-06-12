@@ -572,7 +572,7 @@
       
       // Create only 2 data packages (removed the first one)
       dataPackagePositions.slice(1, 3).forEach((_, index) => {
-
+        debugger;
         const dataPackageText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         dataPackageText.setAttribute("class", "data-package-text");
         dataPackageText.setAttribute("text-anchor", "middle");
