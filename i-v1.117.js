@@ -543,7 +543,7 @@
       
       // Create only 2 data packages (removed the first one)
       dataPackagePositions.slice(1, 3).forEach((_, index) => {
-        debugger;
+        
         const dataPackageText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         dataPackageText.setAttribute("class", "data-package-text");
         dataPackageText.setAttribute("text-anchor", "middle");
@@ -1510,7 +1510,7 @@ columns.forEach(column => {
       // Handle section hover
       function handleSectionHover(sectionNum,isHover) {
         pauseAnimation();
-        debugger;
+        // Update UI based on hover state
         updateUI(sectionNum,isHover);
         
       }
@@ -1518,7 +1518,7 @@ columns.forEach(column => {
       // Handle section hover
       function handleSectionClicked(sectionNum,isHover) {
         pauseAnimation();
-        debugger;
+        // Update UI based on click state
         updateUI(sectionNum,isHover);
         showCaseStudy(sectionNum, isHover);
       }
