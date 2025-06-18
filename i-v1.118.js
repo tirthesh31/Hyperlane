@@ -1360,10 +1360,12 @@ columns.forEach(column => {
     
       // Function to update UI based on current section
       function updateUI(section,isHover) {
-        // Reset all sections and case studies
-        section1.style.opacity = '100%';
-        section2.style.opacity = '40%';
-        section3.style.opacity = '40%';
+        if(!isHover){
+          // Reset all sections and case studies
+          section1.style.opacity = '100%';
+          section2.style.opacity = '40%';
+          section3.style.opacity = '40%';
+        }
         
         // Update loaders based on current section
         if (section === 1) {
@@ -1373,9 +1375,7 @@ columns.forEach(column => {
             loader2.style.width = '0%';
             loader3.style.width = '0%';
           }
-          section1.style.opacity = '100%';
-          section2.style.opacity = '40%';
-          section3.style.opacity = '40%';
+          section1.style.opacity = '100%'
           
           if(viewportWidth < 768) {
             section1.style.borderColor = '#D631B9';
@@ -1391,9 +1391,8 @@ columns.forEach(column => {
             loader2.style.opacity = '1';
             loader3.style.width = '0%';
           }
-          section1.style.opacity = '40%';
           section2.style.opacity = '100%';
-          section3.style.opacity = '40%';
+          
 
           if(viewportWidth < 768) {
             section2.style.borderColor = '#D631B9';
@@ -1411,10 +1410,7 @@ columns.forEach(column => {
             loader3.style.width =  '100%';
             loader3.style.opacity = '1';
           }
-          section1.style.opacity = '40%';
-          section2.style.opacity = '40%';
           section3.style.opacity = '100%';
-          loader1.style.width = '0%';
           
           if(viewportWidth < 768) {
             section3.style.borderColor = '#D631B9';
