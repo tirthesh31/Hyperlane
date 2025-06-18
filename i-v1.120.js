@@ -1329,6 +1329,7 @@ columns.forEach(column => {
       const caseStudy2 = document.querySelector('.casestudy-2');
       const caseStudy3 = document.querySelector('.casestudy-3');
       
+      loader1.style.width = '100%';
       // Animation control variables
       let animationId;
       let startTime;
@@ -1360,6 +1361,7 @@ columns.forEach(column => {
     
       // Function to update UI based on current section
       function updateUI(section,isHover) {
+        
         if(!isHover){
           // Reset all sections and case studies
           section1.style.opacity = '100%';
