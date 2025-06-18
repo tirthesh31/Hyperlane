@@ -1376,7 +1376,13 @@ columns.forEach(column => {
             loader3.style.width = '0%';
           }
           section1.style.opacity = '100%'
-          
+          if(loader2.style.width != '100%') {
+            section2.style.opacity = '40%'
+          }
+          if(loader3.style.width != '100%') {
+            section3.style.opacity = '40%'
+          }
+
           if(viewportWidth < 768) {
             section1.style.borderColor = '#D631B9';
             section2.style.borderColor = 'rgba(8, 20, 40, 0.15)';
@@ -1392,7 +1398,12 @@ columns.forEach(column => {
             loader3.style.width = '0%';
           }
           section2.style.opacity = '100%';
-          
+          if(loader1.style.width != '100%') {
+            section1.style.opacity = '40%'
+          }
+          if(loader3.style.width != '100%') {
+            section3.style.opacity = '40%'
+          }
 
           if(viewportWidth < 768) {
             section2.style.borderColor = '#D631B9';
@@ -1411,6 +1422,12 @@ columns.forEach(column => {
             loader3.style.opacity = '1';
           }
           section3.style.opacity = '100%';
+          if(loader2.style.width != '100%') {
+            section2.style.opacity = '40%'
+          }
+          if(loader1.style.width != '100%') {
+            section1.style.opacity = '40%'
+          }
           
           if(viewportWidth < 768) {
             section3.style.borderColor = '#D631B9';
