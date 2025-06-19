@@ -7,7 +7,7 @@
     if (window.innerWidth > 1600) {
       viewportWidth = 1600;
     } else if (window.innerWidth <= 1440 && window.innerWidth >= 800) {
-      viewportWidth = 1200;
+      viewportWidth = 1440;
     } else {
       viewportWidth = window.innerWidth;
     }
