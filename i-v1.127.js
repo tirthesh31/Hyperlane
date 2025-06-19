@@ -6,14 +6,14 @@
 
     if (window.innerWidth > 1600) {
       viewportWidth = 1600;
-    } else if (window.innerWidth <= 1440 && window.innerWidth >= 800) {
+    } else if (window.innerWidth <= 1440 && window.innerWidth >= 991) {
       viewportWidth = 1440;
     } else {
       viewportWidth = window.innerWidth;
     }
 
     let viewportHeight;
-    if(viewportWidth < 800) {
+    if(viewportWidth < 990) {
       viewportHeight = window.innerHeight;
       document.getElementById("space-map").removeAttribute("viewBox");
     }else{
@@ -25,7 +25,7 @@
     let validCombinations = [];
 
     // Then assign values based on viewport width
-    if(viewportWidth < 800) {
+    if(viewportWidth < 990) {
       starSystems = [
         { id: 'star1', x: viewportWidth * .185, y: viewportHeight * .19, name: 'ECLIPSE' },
         { id: 'star2', x: viewportWidth * .24, y: viewportHeight * .405, name: 'OPTIMISM' },
@@ -47,7 +47,7 @@
       ];
     }
 
-    if(viewportWidth < 800) {
+    if(viewportWidth < 990) {
       validCombinations = [
         { org: 'star4', dest: 'star1' , dataPackage: 'RENZO', headline:'Asset Issuance'}, // SOLANA - BASE
         { org: 'star2', dest: 'star3' , dataPackage: 'VELODROME', headline:'Velodrome'}, // POLYGON - ETHEREUM
@@ -963,7 +963,7 @@
 
       // Configure display sequences FIRST
       let textSequences;
-      if(viewportWidth < 800) {
+      if(viewportWidth < 990) {
         textSequences = [
           { source: 'node4', target: 'node1' , payload: 'RENZO', title:'Asset Issuance'}, // SOLANA - BASE
           { source: 'node2', target: 'node3' , payload: 'VELODROME', title:'Velodrome'}, // POLYGON - ETHEREUM
