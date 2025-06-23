@@ -1274,7 +1274,7 @@ columns.forEach(column => {
     // Find the image in this column and set its opacity to 1
       let imageClass;
 
-      if(viewportWidth < 1024) {
+      if(viewportWidth < 768) {
           // Use mobile image classes
           imageClass = this.classList.contains('col-send') ? '.architecture-image.send.mobile' : 
                       this.classList.contains('col-extend') ? '.architecture-image.extend.mobile' : 
