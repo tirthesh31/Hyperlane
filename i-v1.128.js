@@ -1217,7 +1217,7 @@ columns.forEach(column => {
       // Determine which image class to use based on viewport width and column
       let imageClass;
 
-      if(viewportWidth < 768) {
+      if(viewportWidth < 1024) {
           // Use mobile image classes
           imageClass = col.classList.contains('col-send') ? '.architecture-image.send.mobile' : 
                       col.classList.contains('col-extend') ? '.architecture-image.extend.mobile' : 
@@ -1245,7 +1245,7 @@ columns.forEach(column => {
         animateLoader(loader, 0, 500); // Reset loader width with animation
       }
 
-      if(viewportWidth < 768) {
+      if(viewportWidth < 1024) {
         col.style.borderBottomWidth = '1px';
         col.style.borderBottomStyle = 'solid';
         col.style.borderColor = 'rgba(255, 255, 255, 0.15)';
@@ -1274,7 +1274,7 @@ columns.forEach(column => {
     // Find the image in this column and set its opacity to 1
       let imageClass;
 
-      if(viewportWidth < 768) {
+      if(viewportWidth < 1024) {
           // Use mobile image classes
           imageClass = this.classList.contains('col-send') ? '.architecture-image.send.mobile' : 
                       this.classList.contains('col-extend') ? '.architecture-image.extend.mobile' : 
@@ -1301,7 +1301,7 @@ columns.forEach(column => {
       animateLoader(loader, 100, 500); // Animate to 100% width
     }
 
-    if(viewportWidth < 768) {
+    if(viewportWidth < 1024) {
       this.style.borderColor = '#D631B9';
       const bodytext = this.classList.contains('col-send') ? '.body-main.col-send' :
                       this.classList.contains('col-extend') ? '.body-main.col-extend' : 
