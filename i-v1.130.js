@@ -1217,7 +1217,7 @@ columns.forEach(column => {
       // Determine which image class to use based on viewport width and column
       let imageClass;
 
-      if(viewportWidth < 1024) {
+      if(viewportWidth < 768) {
           // Use mobile image classes
           imageClass = col.classList.contains('col-send') ? '.architecture-image.send.mobile' : 
                       col.classList.contains('col-extend') ? '.architecture-image.extend.mobile' : 
