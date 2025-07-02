@@ -1,4 +1,3 @@
-
 // Include GSAP and MotionPathPlugin via CDN or package manager
     // Register plugins
     gsap.registerPlugin(MotionPathPlugin);
@@ -117,11 +116,7 @@
         const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
         group.setAttribute("id", star.id);
         group.setAttribute("class", "star-system");
-        gsap.set(group, {
-          x: star.x,
-          y: star.y,
-          transformOrigin: `${star.x}px ${star.y}px`
-        });
+        group.setAttribute("transform", `translate(${star.x}, ${star.y})`);
         group.setAttribute("data-index", index);
         group.style.opacity = "0"; // Initially set all stars to invisible
         
@@ -206,12 +201,7 @@
         
         // Use the star-specific SVG icon with scale adjustment to make it 2px smaller
         const orgIconScale = 0.6; // Scale factor to make icon 2px smaller
-        gsap.set(orgSymbol, {
-          scale: orgIconScale,
-          x: (1-orgIconScale)*orgCenter.x/orgIconScale,
-          y: (1-orgIconScale)*orgCenter.y/orgIconScale,
-          transformOrigin: `${orgCenter.x}px ${orgCenter.y}px`
-        });
+        orgSymbol.setAttribute("transform", `scale(${orgIconScale}) translate(${(1-orgIconScale)*orgCenter.x/orgIconScale}, ${(1-orgIconScale)*orgCenter.y/orgIconScale})`);
         orgSymbol.setAttribute("href", getStarSymbolPath(star.id, orgCenter.x, orgCenter.y));
         // Set width and height to appropriate size
         orgSymbol.setAttribute("width", "13");
@@ -261,10 +251,7 @@
             rect.setAttribute("height", "4");
             rect.setAttribute("fill", "#fff");
             rect.setAttribute("fill-opacity", "0");
-            gsap.set(rect, {
-              rotation: 90 + (angle * 180 / Math.PI),
-              transformOrigin: `${x}px ${y}px`
-            });
+            rect.setAttribute("transform", `rotate(${90 + (angle * 180 / Math.PI)} ${x} ${y})`); // Rotate rectangle to follow arc
             rect.setAttribute("class", "org-rotating-rect");
             
             orgRotatingGroup.appendChild(rect);
